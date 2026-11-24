@@ -27,7 +27,6 @@
 		2AAAFC67C1D3B85141ECC766 = {isa = PBXBuildFile; fileRef = 7BFBDE8C913DD9FBF996F87E;};
 		2BF0D42F465687E61FB6E749 = {isa = PBXBuildFile; fileRef = 0E95E3DF4F6DD230EED13633;};
 		2F0A122AC6B0118B8062117B = {isa = PBXBuildFile; fileRef = 932BD80B233627CD816C979B;};
-		32E25B520F4EB6A27DA20806 = {isa = PBXBuildFile; fileRef = 220AC5EC6ED11E8F67B1F76D;};
 		34775FB6225021749091B775 = {isa = PBXBuildFile; fileRef = 2A87B5FC7DEA3F7C11BD5B32;};
 		39F5440C036E7976B06D06A1 = {isa = PBXBuildFile; fileRef = A01ECB24860E16B76E042F5A;};
 		3A99F244858DCB682D8C17D1 = {isa = PBXBuildFile; fileRef = 6BD3A931B26566270795C440;};
@@ -35,8 +34,9 @@
 		44C27862A5F23B493B104CB4 = {isa = PBXBuildFile; fileRef = 15D55EF0C48485A090E3F232;};
 		45A9F73EA82DC9F544395AB0 = {isa = PBXBuildFile; fileRef = C145AF1DFBEEEB58A7D8E489;};
 		45AEEB531DCC80B2C9798EB0 = {isa = PBXBuildFile; fileRef = 9E5CEC5E8AB820239C27D3E1;};
-		4EF8D2782D1C68675F342190 = {isa = PBXBuildFile; fileRef = 3E2650FE8228C9ACDF7DDBDE;};
+		4D084127936765BDE570A5C8 = {isa = PBXBuildFile; fileRef = 4DE22E039DBF9A9FB484B012;};
 		4F0290CB24182EC456099739 = {isa = PBXBuildFile; fileRef = 45C3AB4B376FDD14EE6258F9;};
+		4F95529EAFAD44174EB11C2C = {isa = PBXBuildFile; fileRef = 0DDD8485C6809FE077531DFA;};
 		51607804CE2CBDB33FD2E8AE = {isa = PBXBuildFile; fileRef = 23B9475C743D25C71AD03E29;};
 		522988C261269A6A5EAE1299 = {isa = PBXBuildFile; fileRef = CAC4992FE3062B30E1E8AFD7;};
 		5D23F3430D1B903DF5077B2D = {isa = PBXBuildFile; fileRef = A14850925134B09D4D4987D6;};
@@ -83,7 +83,6 @@
 		C14A082978093B65C910DDE9 = {isa = PBXBuildFile; fileRef = 7501ED24BA18E18C61A96028;};
 		C5174C0DE5622FEFE5CAA22E = {isa = PBXBuildFile; fileRef = 284D5ACABBFE40F6B7C36AE1;};
 		C65785D848A3D26C28B743CC = {isa = PBXBuildFile; fileRef = B7382E8A86FCE1F4D7E5918E;};
-		C7DBF06EA2D456A50F9F7859 = {isa = PBXBuildFile; fileRef = 74BB464291C08F2A766E32A5;};
 		C87ECFBFEB6BAC46A551B074 = {isa = PBXBuildFile; fileRef = 671D31F54796E1E8406D46AE;};
 		CC4764108756A4A786C585C5 = {isa = PBXBuildFile; fileRef = 17FACD2FBDCA734D6AB2C6D4;};
 		CE55D29F5441C231C99A653C = {isa = PBXBuildFile; fileRef = FC28496EEA7E11402CF0E759;};
@@ -92,6 +91,7 @@
 		D494CF336E7E07FD318A1F7E = {isa = PBXBuildFile; fileRef = CAED5B82D32F598A4EBDF6FD;};
 		D59618EBF30DC381CC34E065 = {isa = PBXBuildFile; fileRef = 626BBAE298DFC4C5D9FC5C1D;};
 		D64337F63AE9226C6F496D64 = {isa = PBXBuildFile; fileRef = 0A355EB88D93C9F60EE738A2;};
+		D6CF188D254DC15F918AB373 = {isa = PBXBuildFile; fileRef = D18CFD4A9A14CACE59C6B5BB;};
 		DC8175143D45D6895ED5A46E = {isa = PBXBuildFile; fileRef = 48EE90AFA6319E48BC93AB52;};
 		DC9E9B55798C4F6F7667F8EF = {isa = PBXBuildFile; fileRef = 772051312E4C87E495FEC2F5;};
 		DD5E171A1A898D009AA77638 = {isa = PBXBuildFile; fileRef = 318CB5C30C64FCD90D180807;};
@@ -123,6 +123,7 @@
 		0A355EB88D93C9F60EE738A2 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>";};
 		0A85BDF8F3AA156359DA9511 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingHistory.swift; sourceTree = "<group>";};
 		0C94DB3BA5B30E24E4C81327 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>";};
+		0DDD8485C6809FE077531DFA = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeComponents.swift; sourceTree = "<group>";};
 		0E95E3DF4F6DD230EED13633 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>";};
 		0F6A8FDD2061AF1019154589 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>";};
 		1348711A0CD7331D973A29BA = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badges.swift; sourceTree = "<group>";};
@@ -134,7 +135,6 @@
 		188CC84EB59DF782E68713C4 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>";};
 		19A33769F7E916FF602B2CAD = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGuide.swift; sourceTree = "<group>";};
 		1F3000E9201E897F462550E7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitPresets.swift; sourceTree = "<group>";};
-		220AC5EC6ED11E8F67B1F76D = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>";};
 		22B32C95AEE9B54EA9F4D5BF = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>";};
 		23B9475C743D25C71AD03E29 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitPresetPicker.swift; sourceTree = "<group>";};
 		23F2843980B34362CAA5304F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEditorView.swift; sourceTree = "<group>";};
@@ -151,13 +151,13 @@
 		318CB5C30C64FCD90D180807 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerTests.swift; sourceTree = "<group>";};
 		366FCF247A64896406BE67CB = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>";};
 		373A61624AFBAC2743B05781 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExerciseEditor.swift; sourceTree = "<group>";};
-		3E2650FE8228C9ACDF7DDBDE = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>";};
 		411FCB23978383A31ECE1D4E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRankDetailView.swift; sourceTree = "<group>";};
 		45C3AB4B376FDD14EE6258F9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsView.swift; sourceTree = "<group>";};
 		46FDAE6AF513B6EA5BE54E7A = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnatomyFigure.swift; sourceTree = "<group>";};
 		4821E67FE92CC3A20DE05AB5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingInfoViews.swift; sourceTree = "<group>";};
 		4889393DEEB0B94A2E6835CA = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>";};
 		48EE90AFA6319E48BC93AB52 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>";};
+		4DE22E039DBF9A9FB484B012 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeRootView.swift; sourceTree = "<group>";};
 		4EBDB6B15A36A92B567D2199 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingEngine.swift; sourceTree = "<group>";};
 		52A7F92C79F3E01663B86EB9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingStore.swift; sourceTree = "<group>";};
 		56B67822BC387BB01CDFBDFD = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>";};
@@ -173,7 +173,6 @@
 		6BD3A931B26566270795C440 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>";};
 		705305D90BDC94EFA6704164 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>";};
 		733DE4468A10216A95DBA56E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrengthMath.swift; sourceTree = "<group>";};
-		74BB464291C08F2A766E32A5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>";};
 		7501ED24BA18E18C61A96028 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideSwitcher.swift; sourceTree = "<group>";};
 		7673B6FCB32BE6A8866AEF81 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>";};
 		772051312E4C87E495FEC2F5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>";};
@@ -208,6 +207,7 @@
 		CAC4992FE3062B30E1E8AFD7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMapView.swift; sourceTree = "<group>";};
 		CAED5B82D32F598A4EBDF6FD = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>";};
 		CFA253834C2BEDD2098D3338 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>";};
+		D18CFD4A9A14CACE59C6B5BB = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeTheme.swift; sourceTree = "<group>";};
 		D3EB5E103649FB8C538F8393 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insights.swift; sourceTree = "<group>";};
 		D4A69B13AD194E101D015DF9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>";};
 		D571DBB6D753C82B8E7EC0B8 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeSchema.swift; sourceTree = "<group>";};
@@ -267,11 +267,11 @@
 				8D47D01D6E97F23C26FEE7FE,
 			); path = QuickAdd; sourceTree = "<group>";};
 		3693C116C10B48A3F56D2613 = {isa = PBXGroup; children = (
-				3E2650FE8228C9ACDF7DDBDE,
 				705305D90BDC94EFA6704164,
+				0DDD8485C6809FE077531DFA,
+				D18CFD4A9A14CACE59C6B5BB,
 				A00153CA26418728CA8E1618,
 				1575221CB55BD8710CB8C989,
-				220AC5EC6ED11E8F67B1F76D,
 			); path = Design; sourceTree = "<group>";};
 		369F27E92289E35E569334CC = {isa = PBXGroup; children = (
 				5BBD0006D62748AA2F1570BD,
@@ -435,8 +435,8 @@
 		D6595A3EEA50B9EDE56A1E21 = {isa = PBXGroup; children = (
 				ABA48C0503FBD20055F22495,
 				7673B6FCB32BE6A8866AEF81,
+				4DE22E039DBF9A9FB484B012,
 				692D303DD23972F53E6EEA45,
-				74BB464291C08F2A766E32A5,
 				8C719CD4D8B1BF8F72166A86,
 			); path = App; sourceTree = "<group>";};
 		D8E7FA241EE157A49EF871B8 = {isa = PBXGroup; children = (
@@ -535,14 +535,14 @@
 				114695DC5B6F2B51C610EC4C,
 				EA987CDA69C21E10CFF02B35,
 				A2B07221EBBFF73AF84B8338,
+				4D084127936765BDE570A5C8,
 				902B8D7ECAB731A4E27C5F56,
-				C7DBF06EA2D456A50F9F7859,
 				DEDF097B9E07F5CDC1937410,
-				4EF8D2782D1C68675F342190,
 				77F98F16FC2B4DF60B09A1B4,
+				4F95529EAFAD44174EB11C2C,
+				D6CF188D254DC15F918AB373,
 				03603497E9E1C57BF8A511E4,
 				FA4DB0A3C320D9FAC6AEE6B5,
-				32E25B520F4EB6A27DA20806,
 				220154F7ED8868315211B562,
 				EA23228545742A35F0B666BF,
 				23A1B6BA987045613744DEB1,

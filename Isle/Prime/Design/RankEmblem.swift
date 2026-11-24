@@ -24,17 +24,18 @@ struct RankEmblem: View {
         .modifier(MasterShimmer(active: animated && tier == .master && !dimmed))
         .background {
             if showsAura {
-                RadialGradient(colors: [tier.glow.opacity(breathe ? 0.5 : 0.32), tier.glow.opacity(0.08), .clear],
-                               center: .center, startRadius: size * 0.1, endRadius: size * 0.75)
-                    .frame(width: size * 1.5, height: size * 1.5)
-                    .blur(radius: size * 0.08)
+                RadialGradient(colors: [tier.glow.opacity(0.5), tier.glow.opacity(0.1), .clear],
+                               center: .center, startRadius: size * 0.1, endRadius: size * 0.8)
+                    .frame(width: size * 1.6, height: size * 1.6)
+                    .opacity(breathe ? 1 : 0.64)
             }
         }
         .saturation(dimmed ? 0 : 1)
         .opacity(dimmed ? 0.4 : 1)
-        .shadow(color: dimmed ? .clear : tier.glow.opacity(tier >= .elite ? (breathe ? 0.7 : 0.4) : 0.3),
+        // One fixed shadow: animating a shadow's radius re-renders it every frame,
+        // and small list emblems don't need the glow at all.
+        .shadow(color: dimmed || size < 60 ? .clear : tier.glow.opacity(tier >= .elite ? 0.55 : 0.3),
                 radius: size / (tier >= .elite ? 5 : 9), y: size / 30)
-        .shadow(color: dimmed ? .clear : .black.opacity(0.35), radius: size / 14, y: size / 18)
         .onAppear {
             guard animated, motion.allowsMovement, !dimmed, tier >= .gold else { return }
             withAnimation(.easeInOut(duration: 2).repeatForever(autoreverses: true)) { breathe = true }

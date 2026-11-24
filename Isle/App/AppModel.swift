@@ -3,7 +3,13 @@ import SwiftData
 import Observation
 
 enum MainTab: Hashable {
-    case today, week, habits, isle
+    case today, week, lists, habits, isle
+}
+
+/// Where a quick-add opened from: a day and maybe a time on the timeline.
+struct QuickAddPreset: Equatable {
+    var day: Int?
+    var start: Int?
 }
 
 /// Screen-level state shared across tabs: which sheets are open, the toast, the undo action.
@@ -12,6 +18,8 @@ enum MainTab: Hashable {
 final class AppModel {
     var tab: MainTab = .today
     var showQuickAdd = false
+    var quickAddPreset: QuickAddPreset? = nil
+    var showRoutines = false
     var editingTask: TaskItem? = nil
     var showCheckin = false
     var focusTask: TaskItem? = nil
@@ -43,6 +51,12 @@ final class AppModel {
         undoAction?()
         undoAction = nil
         withAnimation(.easeOut(duration: 0.2)) { toast = nil }
+    }
+
+    /// Opens quick add, optionally already set to a day and time.
+    func quickAdd(day: Int? = nil, start: Int? = nil) {
+        quickAddPreset = QuickAddPreset(day: day, start: start)
+        showQuickAdd = true
     }
 
     func cheer() {
@@ -207,6 +221,9 @@ struct Store {
         for f in (try? context.fetch(FetchDescriptor<FreezeDay>())) ?? [] { context.delete(f) }
         for i in (try? context.fetch(FetchDescriptor<IsleState>())) ?? [] { context.delete(i) }
         for s in (try? context.fetch(FetchDescriptor<AppSettings>())) ?? [] { context.delete(s) }
+        for l in (try? context.fetch(FetchDescriptor<NoteList>())) ?? [] { context.delete(l) }
+        for e in (try? context.fetch(FetchDescriptor<ListEntry>())) ?? [] { context.delete(e) }
+        for r in (try? context.fetch(FetchDescriptor<Routine>())) ?? [] { context.delete(r) }
         save()
     }
 }

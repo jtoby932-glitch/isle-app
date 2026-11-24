@@ -77,8 +77,11 @@ struct TodayView: View {
     @Query private var checkins: [DayCheckin]
     @Query private var isles: [IsleState]
     @Query private var settingsRows: [AppSettings]
+    @Query(sort: \Routine.order) private var routines: [Routine]
 
     @State private var tab = 0
+    /// An anytime task waiting for the user to tap a time on the grid.
+    @State private var placing: TaskItem? = nil
     @State private var floating: [String: Int] = [:]
     @State private var rolloverDismissed = false
 
@@ -108,6 +111,7 @@ struct TodayView: View {
                 if showRollover { rolloverBanner }
                 if showCheckinPrompt { checkinPrompt }
                 pipStrip(checkable: checkable, doneCount: doneCount, allDone: allDone)
+                routineStrip
                 if checkable.isEmpty && events.isEmpty {
                     StarterSeedsView()
                 } else {
@@ -305,21 +309,105 @@ struct TodayView: View {
     private func timeline(_ all: [IsleDayRow]) -> some View {
         let timed = all.filter { $0.start != nil }
         let untimed = all.filter { $0.start == nil }
-        let now = Day.minuteOfDay
-        let nowIndex = timed.firstIndex { ($0.start ?? 0) > now } ?? timed.count
         let gap = gapSuggestion(timed: timed)
-        return VStack(spacing: 6) {
-            ForEach(Array(timed.enumerated()), id: \.element.id) { i, r in
-                if i == nowIndex { nowLine(now) }
-                if let g = gap, g.index == i { gapRow(g) }
-                rowView(r, showTime: true)
+        return VStack(spacing: 8) {
+            if let t = placing {
+                placingBanner(t)
+            } else if let g = gap {
+                gapRow(g)
             }
-            if nowIndex == timed.count { nowLine(now) }
-            if let g = gap, g.index >= timed.count { gapRow(g) }
             if !untimed.isEmpty {
-                SectionLabel(text: "Anytime today").padding(.top, 6)
-                ForEach(untimed) { r in rowView(r, showTime: false) }
+                SectionLabel(text: "Anytime today").frame(maxWidth: .infinity, alignment: .leading)
+                ForEach(untimed) { r in rowView(r, showTime: false, placeable: true) }
             }
+            DayGridView(day: today, rows: timed,
+                        onOpen: { open($0) },
+                        onToggle: { toggle($0) },
+                        onEmptyTap: { minute in tappedSlot(minute) })
+                .padding(.top, 6)
+            Text("Tap an empty slot to add · hold a block to drag it · hold its bottom edge to stretch")
+                .font(.isle(.caption2, .bold)).foregroundStyle(T.muted)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
+        }
+    }
+
+    private func tappedSlot(_ minute: Int) {
+        if let t = placing {
+            Feedback.play(.place(Day.weekday(today)))
+            withAnimation(.spring(response: 0.45, dampingFraction: 0.78)) {
+                store.move(t, to: today)
+                store.setStart(t, minute)
+                placing = nil
+            }
+        } else {
+            app.quickAdd(day: today, start: minute)
+        }
+    }
+
+    private func placingBanner(_ t: TaskItem) -> some View {
+        HStack(spacing: 10) {
+            Image(systemName: "hand.tap.fill").font(.system(size: 18, weight: .bold))
+            VStack(alignment: .leading, spacing: 1) {
+                Text("Tap a time for “\(t.title)”").font(.isle(.subheadline, .heavy)).lineLimit(1)
+                Text("It'll take \(Fmt.duration(t.minutes)).").font(.isle(.caption, .semibold)).foregroundStyle(T.muted)
+            }
+            Spacer()
+            Button("Cancel") {
+                Feedback.play(.undo)
+                withAnimation { placing = nil }
+            }
+            .buttonStyle(PillButtonStyle(height: 34))
+        }
+        .foregroundStyle(T.ink)
+        .card(fill: T.primarySoft)
+        .transition(.move(edge: .top).combined(with: .opacity))
+    }
+
+    @ViewBuilder
+    private var routineStrip: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 6) {
+                ForEach(routines) { r in
+                    Button { applyRoutine(r) } label: {
+                        HStack(spacing: 5) {
+                            Image(systemName: "play.fill").font(.system(size: 9, weight: .black))
+                            Text(r.name).font(.isle(.caption, .heavy))
+                            Text(Fmt.duration(r.totalMinutes)).font(.isle(.caption2, .bold)).foregroundStyle(T.muted)
+                        }
+                        .foregroundStyle(T.ink)
+                        .padding(.horizontal, 11)
+                        .frame(height: 32)
+                        .background(Capsule().fill(T.habit(r.colorIndex).opacity(0.28)))
+                        .overlay(Capsule().strokeBorder(T.outline, lineWidth: 1.5))
+                    }
+                    .buttonStyle(PressStyle())
+                    .accessibilityLabel("Add routine \(r.name) to today")
+                }
+                Button {
+                    Feedback.play(.lift)
+                    app.showRoutines = true
+                } label: {
+                    Label(routines.isEmpty ? "Routines: add a usual day in one tap" : "Routines", systemImage: "square.stack.3d.down.right")
+                        .font(.isle(.caption, .heavy))
+                        .foregroundStyle(T.muted)
+                        .padding(.horizontal, 11)
+                        .frame(height: 32)
+                        .overlay(Capsule().strokeBorder(T.muted.opacity(0.6), style: StrokeStyle(lineWidth: 1.5, dash: [4, 3])))
+                }
+                .buttonStyle(PressStyle())
+            }
+            .padding(.vertical, 2)
+        }
+    }
+
+    private func applyRoutine(_ r: Routine) {
+        Feedback.play(.bloom(r.items.count))
+        var made: [TaskItem] = []
+        withAnimation(.spring(response: 0.45, dampingFraction: 0.8)) { made = store.apply(r, to: today) }
+        app.showToast("Added \(r.name): \(made.count) block\(made.count == 1 ? "" : "s").") {
+            let s = Store(context: context)
+            for t in made { s.delete(t) }
         }
     }
 
@@ -377,8 +465,15 @@ struct TodayView: View {
 
     // MARK: rows
 
-    private func rowView(_ r: IsleDayRow, showTime: Bool) -> some View {
-        HStack(alignment: .center, spacing: 8) {
+    private func rowView(_ r: IsleDayRow, showTime: Bool, placeable: Bool = false) -> some View {
+        var placeAction: (() -> Void)? = nil
+        if placeable, case .task(let t) = r.kind, !r.done {
+            placeAction = {
+                Feedback.play(.lift)
+                withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) { placing = t }
+            }
+        }
+        return HStack(alignment: .center, spacing: 8) {
             if showTime {
                 Text(r.start.map { Fmt.clock($0) } ?? "")
                     .font(.isle(.caption, .heavy)).foregroundStyle(T.muted)
@@ -388,7 +483,11 @@ struct TodayView: View {
                        floating: floating[r.id],
                        onOpen: { open(r) },
                        onToggle: { toggle(r) },
-                       onFocus: { focus(r) })
+                       onFocus: { focus(r) },
+                       onPlace: placeAction)
+        }
+        .contextMenu {
+            if case .task(let t) = r.kind { TaskActionsMenu(task: t) }
         }
         .transition(.asymmetric(insertion: .move(edge: .top).combined(with: .opacity), removal: .opacity))
     }
@@ -461,6 +560,8 @@ struct DayRowCard: View {
     var onOpen: () -> Void
     var onToggle: () -> Void
     var onFocus: () -> Void
+    /// Shown for anytime tasks on the timeline: pick a time by tapping the grid.
+    var onPlace: (() -> Void)? = nil
 
     var body: some View {
         HStack(spacing: 8) {
@@ -480,6 +581,17 @@ struct DayRowCard: View {
             .buttonStyle(.plain)
             .disabled(row.isEvent)
 
+            if let onPlace {
+                Button(action: onPlace) {
+                    Image(systemName: "clock.badge.plus")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundStyle(T.ink)
+                        .frame(width: 36, height: 36)
+                        .background(Circle().fill(T.primarySoft))
+                }
+                .buttonStyle(PressStyle())
+                .accessibilityLabel("Give \(row.title) a time")
+            }
             if case .task(let t) = row.kind, !row.done, t.minutes >= 45 {
                 Button("Focus", action: onFocus)
                     .buttonStyle(PillButtonStyle(fill: T.lilacStrong, height: 32))

@@ -11,12 +11,14 @@ struct IsleApp: App {
         let c: ModelContainer
         do {
             c = try ModelContainer(for: TaskItem.self, Habit.self, HabitLog.self, FreezeDay.self, DayCheckin.self,
-                                   JournalEntry.self, IsleState.self, AppSettings.self)
+                                   JournalEntry.self, IsleState.self, AppSettings.self,
+                                   NoteList.self, ListEntry.self, Routine.self)
         } catch {
             // Fall back to memory so the app still opens; data won't persist this launch.
             let config = ModelConfiguration(isStoredInMemoryOnly: true)
             c = try! ModelContainer(for: TaskItem.self, Habit.self, HabitLog.self, FreezeDay.self, DayCheckin.self,
-                                    JournalEntry.self, IsleState.self, AppSettings.self, configurations: config)
+                                    JournalEntry.self, IsleState.self, AppSettings.self,
+                                    NoteList.self, ListEntry.self, Routine.self, configurations: config)
         }
         container = c
         NotificationDelegate.shared.container = c

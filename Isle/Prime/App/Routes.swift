@@ -24,6 +24,10 @@ enum Route: Hashable {
     case exerciseHistory(String)
     case session(UUID)
     case plan(UUID)
+    case tools
+    case cardio
+    case measurements
+    case recovery
 }
 
 extension Route: Identifiable {
@@ -64,6 +68,10 @@ struct RouteDestination: View {
         case .exerciseHistory(let slug): ExerciseLoader(slug: slug) { ExerciseHistoryView(exercise: $0) }
         case .session(let id): SessionLoader(id: id) { SessionDetailView(session: $0) }
         case .plan(let id): PlanLoader(id: id) { PlanDetailView(plan: $0) }
+        case .tools: ToolsView()
+        case .cardio: ExtrasHost { metric in CardioView(metric: metric) }
+        case .measurements: ExtrasHost { metric in MeasurementsView(metric: metric) }
+        case .recovery: RecoveryView()
         }
     }
 }

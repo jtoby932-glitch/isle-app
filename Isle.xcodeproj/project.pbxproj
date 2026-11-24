@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00C65B6330FC4AB949EB822C = {isa = PBXBuildFile; fileRef = 4EBDB6B15A36A92B567D2199;};
+		03007F6F694ECABB8ADB5804 = {isa = PBXBuildFile; fileRef = 345C38C7747081AAE7F0BF96;};
 		03396A0F02475933C7482F6F = {isa = PBXBuildFile; fileRef = 373A61624AFBAC2743B05781;};
 		03603497E9E1C57BF8A511E4 = {isa = PBXBuildFile; fileRef = A00153CA26418728CA8E1618;};
 		05C32A275C7A6BD05554BF99 = {isa = PBXBuildFile; fileRef = 99E7DFACDED5E3E75DE22EDB;};
@@ -25,6 +26,7 @@
 		23E5A07F321EEEA64F8FD285 = {isa = PBXBuildFile; fileRef = A67C60CDAED1C689437BD1B6;};
 		27C7936C96A7C8A3CD8A659F = {isa = PBXBuildFile; fileRef = A83838578B9699E81D725AD3;};
 		2AAAFC67C1D3B85141ECC766 = {isa = PBXBuildFile; fileRef = 7BFBDE8C913DD9FBF996F87E;};
+		2BD4B48FC900D7A467812E5E = {isa = PBXBuildFile; fileRef = A089BE2E796846793FB6B98B;};
 		2BF0D42F465687E61FB6E749 = {isa = PBXBuildFile; fileRef = 0E95E3DF4F6DD230EED13633;};
 		2F0A122AC6B0118B8062117B = {isa = PBXBuildFile; fileRef = 932BD80B233627CD816C979B;};
 		34775FB6225021749091B775 = {isa = PBXBuildFile; fileRef = 2A87B5FC7DEA3F7C11BD5B32;};
@@ -32,6 +34,7 @@
 		3A99F244858DCB682D8C17D1 = {isa = PBXBuildFile; fileRef = 6BD3A931B26566270795C440;};
 		419A9B1790297A3ABDA579A0 = {isa = PBXBuildFile; fileRef = E9293D6490D6D7F0BF699CB2;};
 		44C27862A5F23B493B104CB4 = {isa = PBXBuildFile; fileRef = 15D55EF0C48485A090E3F232;};
+		44E99BEDAEDE8D067F1F0298 = {isa = PBXBuildFile; fileRef = A76245FB431C7A352AF5184C;};
 		45A9F73EA82DC9F544395AB0 = {isa = PBXBuildFile; fileRef = C145AF1DFBEEEB58A7D8E489;};
 		45AEEB531DCC80B2C9798EB0 = {isa = PBXBuildFile; fileRef = 9E5CEC5E8AB820239C27D3E1;};
 		4D084127936765BDE570A5C8 = {isa = PBXBuildFile; fileRef = 4DE22E039DBF9A9FB484B012;};
@@ -52,6 +55,7 @@
 		6C236D422A3093F694F78C92 = {isa = PBXBuildFile; fileRef = 19A33769F7E916FF602B2CAD;};
 		6DBDA972F7DEB779C75B1513 = {isa = PBXBuildFile; fileRef = E30F4EDA8A419F9A54514F4C;};
 		6EC3C37A8F037C4FB1BEC63C = {isa = PBXBuildFile; fileRef = 0619BBDAAA0878C365F441BE;};
+		719D3E3DE8E9C829F805BBAD = {isa = PBXBuildFile; fileRef = 7FD979F4593DE7EF55DBBEEE;};
 		77F98F16FC2B4DF60B09A1B4 = {isa = PBXBuildFile; fileRef = 705305D90BDC94EFA6704164;};
 		799B1BB2B72820872638CC45 = {isa = PBXBuildFile; fileRef = 9B4242DBC5C109D0E73A2AF2;};
 		7A3B978501004C5E5C10A28D = {isa = PBXBuildFile; fileRef = E46EDA3FB290EF5C905ECF0F;};
@@ -70,6 +74,7 @@
 		8EED20707A6709743DE43429 = {isa = PBXBuildFile; fileRef = 5BBD0006D62748AA2F1570BD;};
 		902B8D7ECAB731A4E27C5F56 = {isa = PBXBuildFile; fileRef = 692D303DD23972F53E6EEA45;};
 		97F2B965045CC9ABBDEEF189 = {isa = PBXBuildFile; fileRef = DB7BF021B6C0A21D7E3653BF;};
+		99F027FA7491A1E189E104B5 = {isa = PBXBuildFile; fileRef = 27A042ABA1270977B9425413;};
 		9D8EDAD169E652E4C8E28433 = {isa = PBXBuildFile; fileRef = 23F2843980B34362CAA5304F;};
 		A182728C72CB5781FA682162 = {isa = PBXBuildFile; fileRef = B9DC5DD753C988C341319B94;};
 		A2B07221EBBFF73AF84B8338 = {isa = PBXBuildFile; fileRef = 7673B6FCB32BE6A8866AEF81;};
@@ -80,6 +85,7 @@
 		B5CEA48B9E4CDDDDD00FF9C7 = {isa = PBXBuildFile; fileRef = ECEA232A38A2C13EC0FC3766;};
 		B7A71F8BDCA2D9F804FD9925 = {isa = PBXBuildFile; fileRef = 573FBC240C7A2949E08BED9B;};
 		BCD93A3FA186368147C891FD = {isa = PBXBuildFile; fileRef = 316CA38DB4BB1DDA106ACF0F;};
+		BEE33DD3DA7FEB96827659E4 = {isa = PBXBuildFile; fileRef = FCC69998DD0B145ADACB7F98;};
 		C14A082978093B65C910DDE9 = {isa = PBXBuildFile; fileRef = 7501ED24BA18E18C61A96028;};
 		C5174C0DE5622FEFE5CAA22E = {isa = PBXBuildFile; fileRef = 284D5ACABBFE40F6B7C36AE1;};
 		C65785D848A3D26C28B743CC = {isa = PBXBuildFile; fileRef = B7382E8A86FCE1F4D7E5918E;};
@@ -139,6 +145,7 @@
 		23B9475C743D25C71AD03E29 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitPresetPicker.swift; sourceTree = "<group>";};
 		23F2843980B34362CAA5304F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEditorView.swift; sourceTree = "<group>";};
 		248B6CA9950CE55F841102A4 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>";};
+		27A042ABA1270977B9425413 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>";};
 		284D5ACABBFE40F6B7C36AE1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SundayPlanView.swift; sourceTree = "<group>";};
 		28B219C210563C63ED8235D9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>";};
 		291DE220B6C5C1D63ADFD0C9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsleApp.swift; sourceTree = "<group>";};
@@ -149,6 +156,7 @@
 		2E48A240E1E8A64DD3AE055C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>";};
 		316CA38DB4BB1DDA106ACF0F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>";};
 		318CB5C30C64FCD90D180807 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerTests.swift; sourceTree = "<group>";};
+		345C38C7747081AAE7F0BF96 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreExtras.swift; sourceTree = "<group>";};
 		366FCF247A64896406BE67CB = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>";};
 		373A61624AFBAC2743B05781 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExerciseEditor.swift; sourceTree = "<group>";};
 		411FCB23978383A31ECE1D4E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRankDetailView.swift; sourceTree = "<group>";};
@@ -180,6 +188,7 @@
 		79DF8C6D834636C03D48E2CC = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreens.swift; sourceTree = "<group>";};
 		7BFBDE8C913DD9FBF996F87E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsleNotifications.swift; sourceTree = "<group>";};
 		7D1DC474D48E62EF6425EB22 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IsleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR;};
+		7FD979F4593DE7EF55DBBEEE = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViews.swift; sourceTree = "<group>";};
 		84716A75832BA5FA2D215C7A = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>";};
 		8C719CD4D8B1BF8F72166A86 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>";};
 		8D47D01D6E97F23C26FEE7FE = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>";};
@@ -193,9 +202,11 @@
 		9E5DE68E08A78676266786C5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickParser.swift; sourceTree = "<group>";};
 		A00153CA26418728CA8E1618 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankEmblem.swift; sourceTree = "<group>";};
 		A01ECB24860E16B76E042F5A = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>";};
+		A089BE2E796846793FB6B98B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesView.swift; sourceTree = "<group>";};
 		A14850925134B09D4D4987D6 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>";};
 		A1B02E8C6E70D717DA225D7A = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsView.swift; sourceTree = "<group>";};
 		A67C60CDAED1C689437BD1B6 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFilter.swift; sourceTree = "<group>";};
+		A76245FB431C7A352AF5184C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>";};
 		A83838578B9699E81D725AD3 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>";};
 		ABA48C0503FBD20055F22495 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>";};
 		ADDB9F7929DCE7916D961B20 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTypes.swift; sourceTree = "<group>";};
@@ -221,6 +232,7 @@
 		ECEA232A38A2C13EC0FC3766 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>";};
 		FB98C6CDCF86E3E2CE0B485C = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Isle.app; sourceTree = BUILT_PRODUCTS_DIR;};
 		FC28496EEA7E11402CF0E759 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePickerView.swift; sourceTree = "<group>";};
+		FCC69998DD0B145ADACB7F98 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayGridView.swift; sourceTree = "<group>";};
 		FF5E518AC2B71E481F2E8431 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>";};
 /* End PBXFileReference section */
 
@@ -292,6 +304,9 @@
 		538E907CC4957C1F26FCE552 = {isa = PBXGroup; children = (
 				9D23390A9EF71C7FF15EEFD1,
 			); path = Done; sourceTree = "<group>";};
+		5BC0500F354510E0E99D7944 = {isa = PBXGroup; children = (
+				A76245FB431C7A352AF5184C,
+			); path = Lists; sourceTree = "<group>";};
 		6B757FB26BD888D77CBE0E78 = {isa = PBXGroup; children = (
 				E46EDA3FB290EF5C905ECF0F,
 				6BD3A931B26566270795C440,
@@ -310,8 +325,10 @@
 				055EDE3095D58FC19C212647,
 				048B9C867C3A9C2FB303D0B3,
 				91D73E9B0BA3E8E9E2AAECE8,
+				5BC0500F354510E0E99D7944,
 				10B1475BEE0A6A61DE3E522E,
 				30C40C5778D9B03C26F37582,
+				D9183B1BFC5E76A14230BC7D,
 				8348832F1089A581FE151309,
 				8CF158AFB5B6E99C624C12EA,
 				369F27E92289E35E569334CC,
@@ -418,6 +435,7 @@
 				45C3AB4B376FDD14EE6258F9,
 			); path = Workouts; sourceTree = "<group>";};
 		BF32C60B8DCF50A628E7BC6F = {isa = PBXGroup; children = (
+				FCC69998DD0B145ADACB7F98,
 				0619BBDAAA0878C365F441BE,
 				ECEA232A38A2C13EC0FC3766,
 			); path = Today; sourceTree = "<group>";};
@@ -430,8 +448,13 @@
 				7CA891C42B485BA4597E7EF4,
 				9E3B0B6F7E57A231713C73A3,
 				D8E7FA241EE157A49EF871B8,
+				CF1325CDF946A2A38BF1AE84,
 				BE27690F83B7BD5A4538174F,
 			); path = Features; sourceTree = "<group>";};
+		CF1325CDF946A2A38BF1AE84 = {isa = PBXGroup; children = (
+				27A042ABA1270977B9425413,
+				7FD979F4593DE7EF55DBBEEE,
+			); path = Tools; sourceTree = "<group>";};
 		D6595A3EEA50B9EDE56A1E21 = {isa = PBXGroup; children = (
 				ABA48C0503FBD20055F22495,
 				7673B6FCB32BE6A8866AEF81,
@@ -446,6 +469,9 @@
 				4821E67FE92CC3A20DE05AB5,
 				A1B02E8C6E70D717DA225D7A,
 			); path = Rankings; sourceTree = "<group>";};
+		D9183B1BFC5E76A14230BC7D = {isa = PBXGroup; children = (
+				A089BE2E796846793FB6B98B,
+			); path = Routines; sourceTree = "<group>";};
 		DA1920A03DD5BE7D4146D85A = {isa = PBXGroup; children = (
 				0A355EB88D93C9F60EE738A2,
 			); path = Week; sourceTree = "<group>";};
@@ -458,6 +484,7 @@
 				291DE220B6C5C1D63ADFD0C9,
 				316CA38DB4BB1DDA106ACF0F,
 				7501ED24BA18E18C61A96028,
+				345C38C7747081AAE7F0BF96,
 			); path = App; sourceTree = "<group>";};
 		F882CA07E277A6F18F6E5946 = {isa = PBXGroup; children = (
 				6497B9CF0BD0B5BC40283325,
@@ -508,6 +535,7 @@
 				7C8EFE78C12577B5A27D9273,
 				BCD93A3FA186368147C891FD,
 				C14A082978093B65C910DDE9,
+				03007F6F694ECABB8ADB5804,
 				7E8213A07BF61DFB55B138E8,
 				05C32A275C7A6BD05554BF99,
 				799B1BB2B72820872638CC45,
@@ -522,13 +550,16 @@
 				17A2E2189F23D7088147A580,
 				34775FB6225021749091B775,
 				45A9F73EA82DC9F544395AB0,
+				44E99BEDAEDE8D067F1F0298,
 				DC9E9B55798C4F6F7667F8EF,
 				2230427DBB16E02D77F15841,
+				2BD4B48FC900D7A467812E5E,
 				E87AA07EBD7D5A6943648181,
 				DC8175143D45D6895ED5A46E,
 				B104A3F0E8DF76419E3E7C64,
 				8EED20707A6709743DE43429,
 				C5174C0DE5622FEFE5CAA22E,
+				BEE33DD3DA7FEB96827659E4,
 				6EC3C37A8F037C4FB1BEC63C,
 				B5CEA48B9E4CDDDDD00FF9C7,
 				D64337F63AE9226C6F496D64,
@@ -579,6 +610,8 @@
 				8382AD237747EE93E2F6B943,
 				7F8FF1F3B7C8EAE9A53A8BDA,
 				D0DAF8E8E3F42DB0D66DED9F,
+				99F027FA7491A1E189E104B5,
+				719D3E3DE8E9C829F805BBAD,
 				1C6B1FB19644147C0A81B58F,
 				D59618EBF30DC381CC34E065,
 				9D8EDAD169E652E4C8E28433,
@@ -617,10 +650,10 @@
 		2E90775B077C2FEDFB3BF59E = {isa = XCBuildConfiguration; buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "2";
+				CURRENT_PROJECT_VERSION = "3";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = "17.0";
-				MARKETING_VERSION = "1.1";
+				MARKETING_VERSION = "1.2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.savonstudios.isleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -631,10 +664,10 @@
 		48BC085BBF9BBAAE51532390 = {isa = XCBuildConfiguration; buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "2";
+				CURRENT_PROJECT_VERSION = "3";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = "17.0";
-				MARKETING_VERSION = "1.1";
+				MARKETING_VERSION = "1.2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.savonstudios.isleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -646,9 +679,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "2";
+				CURRENT_PROJECT_VERSION = "3";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Isle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Isle;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Isle shows your events next to your tasks so Pip can plan around them.";
@@ -661,7 +695,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.1";
+				MARKETING_VERSION = "1.2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.savonstudios.isle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -695,9 +729,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "2";
+				CURRENT_PROJECT_VERSION = "3";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Isle/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Isle;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Isle shows your events next to your tasks so Pip can plan around them.";
@@ -710,7 +745,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.1";
+				MARKETING_VERSION = "1.2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.savonstudios.isle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

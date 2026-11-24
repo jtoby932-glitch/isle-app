@@ -221,9 +221,90 @@ final class AppSettings {
     }
 }
 
+/// A list (checklist) or a note on the Lists tab.
+@Model
+final class NoteList {
+    var id: UUID = UUID()
+    var title: String = ""
+    var colorIndex: Int = 0
+    var isChecklist: Bool = true
+    /// The text of a note. Checklists keep their lines in ListEntry instead.
+    var body: String = ""
+    var pinned: Bool = false
+    var order: Int = 0
+    var createdAt: Date = Date()
+    var updatedAt: Date = Date()
+
+    init(title: String, isChecklist: Bool, colorIndex: Int, order: Int) {
+        self.id = UUID()
+        self.title = title
+        self.isChecklist = isChecklist
+        self.colorIndex = colorIndex
+        self.order = order
+        self.createdAt = Date()
+        self.updatedAt = Date()
+    }
+}
+
+/// One line of a checklist.
+@Model
+final class ListEntry {
+    var id: UUID = UUID()
+    var listID: UUID = UUID()
+    var text: String = ""
+    var done: Bool = false
+    var order: Int = 0
+    var createdAt: Date = Date()
+
+    init(listID: UUID, text: String, order: Int) {
+        self.id = UUID()
+        self.listID = listID
+        self.text = text
+        self.order = order
+        self.createdAt = Date()
+    }
+}
+
+/// One block inside a routine: a title, an optional clock time and a length.
+struct RoutineItem: Codable, Hashable, Identifiable {
+    var id: UUID = UUID()
+    var title: String
+    var start: Int?
+    var minutes: Int
+}
+
+/// A saved day or part of a day ("Morning", "Gym day") that drops in with one tap.
+@Model
+final class Routine {
+    var id: UUID = UUID()
+    var name: String = ""
+    var colorIndex: Int = 0
+    var itemsData: Data = Data()
+    var order: Int = 0
+    var createdAt: Date = Date()
+    var timesUsed: Int = 0
+
+    init(name: String, colorIndex: Int, items: [RoutineItem], order: Int) {
+        self.id = UUID()
+        self.name = name
+        self.colorIndex = colorIndex
+        self.order = order
+        self.createdAt = Date()
+        self.itemsData = (try? JSONEncoder().encode(items)) ?? Data()
+    }
+
+    var items: [RoutineItem] {
+        get { (try? JSONDecoder().decode([RoutineItem].self, from: itemsData)) ?? [] }
+        set { itemsData = (try? JSONEncoder().encode(newValue)) ?? Data() }
+    }
+
+    var totalMinutes: Int { items.reduce(0) { $0 + $1.minutes } }
+}
+
 enum IsleSchema {
     static let models: [any PersistentModel.Type] = [
         TaskItem.self, Habit.self, HabitLog.self, FreezeDay.self, DayCheckin.self,
-        JournalEntry.self, IsleState.self, AppSettings.self
+        JournalEntry.self, IsleState.self, AppSettings.self,
+        NoteList.self, ListEntry.self, Routine.self
     ]
 }

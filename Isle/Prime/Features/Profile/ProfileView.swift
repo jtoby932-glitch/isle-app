@@ -164,6 +164,14 @@ struct ProfileView: View {
             }
             .listRowBackground(Theme.card)
 
+            Section("Tools") {
+                NavigationLink(value: Route.tools) { Label("Plates, 1RM and timer", systemImage: "wrench.and.screwdriver") }
+                NavigationLink(value: Route.cardio) { Label("Cardio", systemImage: "figure.run") }
+                NavigationLink(value: Route.measurements) { Label("Body measurements", systemImage: "ruler") }
+                NavigationLink(value: Route.recovery) { Label("Recovery", systemImage: "bolt.heart") }
+            }
+            .listRowBackground(Theme.card)
+
             Section("App") {
                 NavigationLink(value: Route.preferences) {
                     LabeledContent { Text(AnimationLevel(rawValue: profile.animationLevelRaw)?.displayName ?? "Full") } label: {

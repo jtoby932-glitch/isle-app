@@ -20,10 +20,16 @@ struct CardModifier: ViewModifier {
         content
             .padding(padding)
             .frame(maxWidth: .infinity, alignment: .leading)
+            // Shadows sit on the plain shape, never on the content, so scrolling doesn't
+            // re-render every card offscreen. Black shadows were invisible on the near-black
+            // page anyway; only the hero keeps its tinted glow.
+            .background {
+                if let tint = heroTint {
+                    shape.fill(Theme.background).shadow(color: tint.opacity(0.22), radius: 24, y: 12)
+                }
+            }
             .background(surface)
             .overlay(shape.strokeBorder(border, lineWidth: 1))
-            .shadow(color: .black.opacity(shadowOpacity), radius: shadowRadius, y: shadowRadius / 2)
-            .shadow(color: heroTint?.opacity(0.22) ?? .clear, radius: 26, y: 12)
     }
 
     private var heroTint: Color? {
@@ -40,17 +46,19 @@ struct CardModifier: ViewModifier {
             shape.fill(Theme.cardRaised)
         case .raised:
             shape.fill(Theme.cardGradient)
-                .overlay(shape.fill(Theme.sheen).mask(sheenMask))
+                .overlay(shape.fill(Self.sheenFill))
         case .hero(let tint):
             HeroSurface(tint: tint)
         }
     }
 
-    /// Fades the top light out softly so it reads as a lit edge, not a band.
-    private var sheenMask: some View {
-        LinearGradient(stops: [.init(color: .white, location: 0), .init(color: .white.opacity(0.4), location: 0.25), .init(color: .clear, location: 1)],
-                       startPoint: .top, endPoint: .bottom)
-    }
+    /// The lit top edge, drawn as one gradient instead of a masked layer (masks cost an offscreen pass).
+    static let sheenFill = LinearGradient(stops: [
+        .init(color: .white.opacity(0.09), location: 0),
+        .init(color: .white.opacity(0.03), location: 0.25),
+        .init(color: .white.opacity(0.008), location: 0.6),
+        .init(color: .clear, location: 1)
+    ], startPoint: .top, endPoint: .bottom)
 
     private var border: LinearGradient {
         switch level {
@@ -64,21 +72,6 @@ struct CardModifier: ViewModifier {
         }
     }
 
-    private var shadowOpacity: Double {
-        switch level {
-        case .flat, .inset: return 0
-        case .raised: return 0.35
-        case .hero: return 0.5
-        }
-    }
-
-    private var shadowRadius: CGFloat {
-        switch level {
-        case .flat, .inset: return 0
-        case .raised: return 12
-        case .hero: return 20
-        }
-    }
 }
 
 /// The hero card background: deep navy with a soft accent light in one corner and a lit top edge.
@@ -99,12 +92,11 @@ struct HeroSurface: View {
                     RadialGradient(colors: [tint.opacity(0.16), .clear], center: .bottomTrailing, startRadius: 0, endRadius: 240)
                 )
             )
-            .overlay(
-                shape.fill(Theme.sheen).mask(
-                    LinearGradient(stops: [.init(color: .white, location: 0), .init(color: .white.opacity(0.35), location: 0.3), .init(color: .clear, location: 1)],
-                                   startPoint: .top, endPoint: .bottom)
-                )
-            )
+            .overlay(shape.fill(LinearGradient(stops: [
+                .init(color: .white.opacity(0.09), location: 0),
+                .init(color: .white.opacity(0.025), location: 0.3),
+                .init(color: .clear, location: 1)
+            ], startPoint: .top, endPoint: .bottom)))
     }
 }
 

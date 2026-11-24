@@ -74,6 +74,7 @@ struct MainView: View {
                 switch app.tab {
                 case .today: TodayView()
                 case .week: WeekView()
+                case .lists: ListsView()
                 case .habits: HabitsView()
                 case .isle: IsleView()
                 }
@@ -98,6 +99,7 @@ struct MainView: View {
         .sheet(isPresented: $app.showSearch) { SearchView().environment(app) }
         .sheet(isPresented: $app.showSettings) { SettingsView().environment(app) }
         .sheet(isPresented: $app.showShop) { ShopView().environment(app) }
+        .sheet(isPresented: $app.showRoutines) { RoutinesView().environment(app) }
         .fullScreenCover(isPresented: $app.showFocus) { FocusView(task: app.focusTask).environment(app) }
     }
 }
@@ -111,12 +113,12 @@ struct IsleTabBar: View {
             item(.week, "Week", "calendar")
             Button {
                 Feedback.play(.lift)
-                app.showQuickAdd = true
+                app.quickAdd(day: Day.today)
             } label: {
                 Image(systemName: "plus")
                     .font(.system(size: 24, weight: .black, design: .rounded))
                     .foregroundStyle(T.primaryInk)
-                    .frame(width: 58, height: 58)
+                    .frame(width: 54, height: 54)
                     .background(
                         ZStack {
                             RoundedRectangle(cornerRadius: 19, style: .continuous).fill(T.outline).offset(y: 3)
@@ -129,11 +131,12 @@ struct IsleTabBar: View {
             .offset(y: -16)
             .frame(maxWidth: .infinity)
             .accessibilityLabel("Quick add")
+            item(.lists, "Lists", "checklist")
             item(.habits, "Habits", "leaf")
             item(.isle, "Isle", "water.waves")
         }
         .padding(.top, 8)
-        .padding(.horizontal, 8)
+        .padding(.horizontal, 4)
         .frame(height: 64, alignment: .top)
         .background(
             T.surface

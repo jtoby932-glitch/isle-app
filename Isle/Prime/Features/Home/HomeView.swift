@@ -432,6 +432,12 @@ struct QuickActionsGrid: View {
                 action("square.stack.3d.up.fill", "Plan", "my week") { appState.showSplitPresets = true }
                 NavigationLink(value: Route.analytics) { tile("chart.xyaxis.line", "Open", "analytics") }
                     .buttonStyle(PressableStyle())
+                NavigationLink(value: Route.cardio) { tile("figure.run", "Log", "cardio") }
+                    .buttonStyle(PressableStyle())
+                NavigationLink(value: Route.recovery) { tile("bolt.heart", "Check", "recovery") }
+                    .buttonStyle(PressableStyle())
+                NavigationLink(value: Route.tools) { tile("wrench.and.screwdriver", "Open", "tools") }
+                    .buttonStyle(PressableStyle())
             }
         }
     }

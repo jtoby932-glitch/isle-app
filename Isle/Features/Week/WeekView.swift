@@ -4,6 +4,7 @@ import SwiftData
 struct WeekView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.modelContext) private var context
+    @Query(sort: \Routine.order) private var routines: [Routine]
     @Query private var tasks: [TaskItem]
     @Query(sort: \Habit.order) private var habits: [Habit]
     @Query private var logs: [HabitLog]
@@ -166,8 +167,40 @@ struct WeekView: View {
                             }
                         }
                         .buttonStyle(.plain)
+                        .contextMenu {
+                            if case .task(let t) = r.kind { TaskActionsMenu(task: t) }
+                        }
                         .transition(.opacity.combined(with: .move(edge: .top)))
                     }
+                    if rows.count > 8 {
+                        Text("+\(rows.count - 8) more").font(.isle(.caption, .heavy)).foregroundStyle(T.muted)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    HStack(spacing: 6) {
+                        Button {
+                            Feedback.play(.lift)
+                            app.quickAdd(day: d)
+                        } label: { Label("Add", systemImage: "plus") }
+                            .buttonStyle(PillButtonStyle(fill: T.primarySoft, height: 34))
+                        if !routines.isEmpty {
+                            Menu {
+                                ForEach(routines) { r in
+                                    Button("\(r.name) · \(Fmt.duration(r.totalMinutes))") { apply(r, to: d) }
+                                }
+                            } label: {
+                                Label("Routine", systemImage: "square.stack.3d.down.right")
+                                    .font(.isle(.subheadline, .heavy)).foregroundStyle(T.ink)
+                                    .padding(.horizontal, 12).frame(height: 34)
+                                    .background(Capsule().fill(T.surface))
+                                    .overlay(Capsule().strokeBorder(T.outline, lineWidth: 2))
+                            }
+                        }
+                        Spacer()
+                    }
+                    .padding(.top, 4)
+                    Text("Hold a task to move it to another day.")
+                        .font(.isle(.caption2, .bold)).foregroundStyle(T.muted)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.leading, 60).padding(.trailing, 12).padding(.bottom, 10)
             }
@@ -209,6 +242,16 @@ struct WeekView: View {
         store.save()
         if let d = moves.first?.1 { Feedback.play(.place(Day.weekday(d)), after: 0.25) }
         Feedback.play(.tick, after: 0.5)
+    }
+
+    private func apply(_ r: Routine, to day: Int) {
+        Feedback.play(.bloom(r.items.count))
+        var made: [TaskItem] = []
+        withAnimation(.spring(response: 0.45, dampingFraction: 0.8)) { made = store.apply(r, to: day) }
+        app.showToast("Added \(r.name) to \(Day.relative(day).lowercased()).") {
+            let s = Store(context: context)
+            for t in made { s.delete(t) }
+        }
     }
 
     private func undoFix() {

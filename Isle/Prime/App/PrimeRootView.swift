@@ -128,9 +128,8 @@ struct MainTabView: View {
                     let selected = appState.selectedTab == tab
                     tabContent(tab)
                         .opacity(selected ? 1 : 0)
-                        .scaleEffect(selected || !motion.allowsMovement ? 1 : 0.985)
                         .offset(y: selected || !motion.allowsMovement ? 0 : 6)
-                        .animation(motion.animation(.spring(response: 0.4, dampingFraction: 0.86)), value: appState.selectedTab)
+                        .animation(motion.animation(.easeOut(duration: 0.22)), value: appState.selectedTab)
                         .allowsHitTesting(selected)
                         .accessibilityHidden(appState.selectedTab != tab)
                 }

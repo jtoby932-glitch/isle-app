@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05C32A275C7A6BD05554BF99 = {isa = PBXBuildFile; fileRef = 99E7DFACDED5E3E75DE22EDB;};
+		114695DC5B6F2B51C610EC4C = {isa = PBXBuildFile; fileRef = B1A933C1F4AD16AC8EF6359B;};
+		17A2E2189F23D7088147A580 = {isa = PBXBuildFile; fileRef = 064C534F353C5A4DD4DB5C6A;};
+		2230427DBB16E02D77F15841 = {isa = PBXBuildFile; fileRef = 8D47D01D6E97F23C26FEE7FE;};
+		27C7936C96A7C8A3CD8A659F = {isa = PBXBuildFile; fileRef = A83838578B9699E81D725AD3;};
+		2F0A122AC6B0118B8062117B = {isa = PBXBuildFile; fileRef = 932BD80B233627CD816C979B;};
+		34775FB6225021749091B775 = {isa = PBXBuildFile; fileRef = 2A87B5FC7DEA3F7C11BD5B32;};
+		39F5440C036E7976B06D06A1 = {isa = PBXBuildFile; fileRef = A01ECB24860E16B76E042F5A;};
+		45A9F73EA82DC9F544395AB0 = {isa = PBXBuildFile; fileRef = C145AF1DFBEEEB58A7D8E489;};
+		636368FEA0C1247C5FAA4B0B = {isa = PBXBuildFile; fileRef = FF5E518AC2B71E481F2E8431;};
+		6800B366108C3942D4EA07C8 = {isa = PBXBuildFile; fileRef = 68373AF028CED6972259F8D0;};
+		6ACC99656BFBBD592D8155B0 = {isa = PBXBuildFile; fileRef = 9D23390A9EF71C7FF15EEFD1;};
+		6EC3C37A8F037C4FB1BEC63C = {isa = PBXBuildFile; fileRef = 0619BBDAAA0878C365F441BE;};
+		799B1BB2B72820872638CC45 = {isa = PBXBuildFile; fileRef = 9B4242DBC5C109D0E73A2AF2;};
+		7B47CE64243F562DF18938A1 = {isa = PBXBuildFile; fileRef = D7494284FCCA25BE73DD5F34;};
+		7C8EFE78C12577B5A27D9273 = {isa = PBXBuildFile; fileRef = 291DE220B6C5C1D63ADFD0C9;};
+		7E8213A07BF61DFB55B138E8 = {isa = PBXBuildFile; fileRef = 0C94DB3BA5B30E24E4C81327;};
+		8616886A4071107064996E13 = {isa = PBXBuildFile; fileRef = D4A69B13AD194E101D015DF9;};
+		8EED20707A6709743DE43429 = {isa = PBXBuildFile; fileRef = 5BBD0006D62748AA2F1570BD;};
+		AA5C3FC121A6100B2D3F318C = {isa = PBXBuildFile; fileRef = 9E5DE68E08A78676266786C5;};
+		B104A3F0E8DF76419E3E7C64 = {isa = PBXBuildFile; fileRef = E4F012CB195561FB9E3E8B0A;};
+		B5CEA48B9E4CDDDDD00FF9C7 = {isa = PBXBuildFile; fileRef = ECEA232A38A2C13EC0FC3766;};
+		BCD93A3FA186368147C891FD = {isa = PBXBuildFile; fileRef = 316CA38DB4BB1DDA106ACF0F;};
+		C5174C0DE5622FEFE5CAA22E = {isa = PBXBuildFile; fileRef = 284D5ACABBFE40F6B7C36AE1;};
+		C65785D848A3D26C28B743CC = {isa = PBXBuildFile; fileRef = B7382E8A86FCE1F4D7E5918E;};
+		C87ECFBFEB6BAC46A551B074 = {isa = PBXBuildFile; fileRef = 671D31F54796E1E8406D46AE;};
+		CC4764108756A4A786C585C5 = {isa = PBXBuildFile; fileRef = 17FACD2FBDCA734D6AB2C6D4;};
+		D64337F63AE9226C6F496D64 = {isa = PBXBuildFile; fileRef = 0A355EB88D93C9F60EE738A2;};
+		DC8175143D45D6895ED5A46E = {isa = PBXBuildFile; fileRef = 48EE90AFA6319E48BC93AB52;};
+		DC9E9B55798C4F6F7667F8EF = {isa = PBXBuildFile; fileRef = 772051312E4C87E495FEC2F5;};
+		DD5E171A1A898D009AA77638 = {isa = PBXBuildFile; fileRef = 318CB5C30C64FCD90D180807;};
+		E87AA07EBD7D5A6943648181 = {isa = PBXBuildFile; fileRef = 56B67822BC387BB01CDFBDFD;};
+		EBE8F7E5912F97BF00CF5177 = {isa = PBXBuildFile; fileRef = 6497B9CF0BD0B5BC40283325;};
+		FF61A78176A8CE02095125D5 = {isa = PBXBuildFile; fileRef = A004C73961E19E4E5051912E;};
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		431387EB7262E1CFC79B125E = {isa = PBXContainerItemProxy; containerPortal = 46F86FAA6BBF9AC94A7E4595; proxyType = 1; remoteGlobalIDString = 203A1CA9B31E0363ABB7796D; remoteInfo = Isle;};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0619BBDAAA0878C365F441BE = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterSeedsView.swift; sourceTree = "<group>";};
+		064C534F353C5A4DD4DB5C6A = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditView.swift; sourceTree = "<group>";};
+		0A355EB88D93C9F60EE738A2 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>";};
+		0C94DB3BA5B30E24E4C81327 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>";};
+		17FACD2FBDCA734D6AB2C6D4 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinView.swift; sourceTree = "<group>";};
+		284D5ACABBFE40F6B7C36AE1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SundayPlanView.swift; sourceTree = "<group>";};
+		291DE220B6C5C1D63ADFD0C9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsleApp.swift; sourceTree = "<group>";};
+		2A87B5FC7DEA3F7C11BD5B32 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>";};
+		316CA38DB4BB1DDA106ACF0F = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>";};
+		318CB5C30C64FCD90D180807 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerTests.swift; sourceTree = "<group>";};
+		48EE90AFA6319E48BC93AB52 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>";};
+		56B67822BC387BB01CDFBDFD = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>";};
+		5BBD0006D62748AA2F1570BD = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>";};
+		6497B9CF0BD0B5BC40283325 = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>";};
+		671D31F54796E1E8406D46AE = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synth.swift; sourceTree = "<group>";};
+		68373AF028CED6972259F8D0 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>";};
+		772051312E4C87E495FEC2F5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>";};
+		7D1DC474D48E62EF6425EB22 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IsleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR;};
+		8D47D01D6E97F23C26FEE7FE = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>";};
+		932BD80B233627CD816C979B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>";};
+		99E7DFACDED5E3E75DE22EDB = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pip.swift; sourceTree = "<group>";};
+		9B4242DBC5C109D0E73A2AF2 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>";};
+		9D23390A9EF71C7FF15EEFD1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCompleteView.swift; sourceTree = "<group>";};
+		9E5DE68E08A78676266786C5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickParser.swift; sourceTree = "<group>";};
+		A004C73961E19E4E5051912E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>";};
+		A01ECB24860E16B76E042F5A = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>";};
+		A83838578B9699E81D725AD3 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>";};
+		B1A933C1F4AD16AC8EF6359B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>";};
+		B7382E8A86FCE1F4D7E5918E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>";};
+		C145AF1DFBEEEB58A7D8E489 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsleView.swift; sourceTree = "<group>";};
+		D4A69B13AD194E101D015DF9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>";};
+		D7494284FCCA25BE73DD5F34 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>";};
+		E4F012CB195561FB9E3E8B0A = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingsView.swift; sourceTree = "<group>";};
+		ECEA232A38A2C13EC0FC3766 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>";};
+		FB98C6CDCF86E3E2CE0B485C = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Isle.app; sourceTree = BUILT_PRODUCTS_DIR;};
+		FF5E518AC2B71E481F2E8431 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>";};
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		38FB6217D7FC577538742B79 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (
+			); runOnlyForDeploymentPostprocessing = 0;};
+		5A0D24819E0C881F947A350C = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (
+			); runOnlyForDeploymentPostprocessing = 0;};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		048B9C867C3A9C2FB303D0B3 = {isa = PBXGroup; children = (
+				A01ECB24860E16B76E042F5A,
+				064C534F353C5A4DD4DB5C6A,
+				2A87B5FC7DEA3F7C11BD5B32,
+			); path = Habits; sourceTree = "<group>";};
+		055EDE3095D58FC19C212647 = {isa = PBXGroup; children = (
+				932BD80B233627CD816C979B,
+			); path = Focus; sourceTree = "<group>";};
+		10B1475BEE0A6A61DE3E522E = {isa = PBXGroup; children = (
+				772051312E4C87E495FEC2F5,
+			); path = Onboarding; sourceTree = "<group>";};
+		224E6732C7CB2CDE4EEB0ECE = {isa = PBXGroup; children = (
+				B1A933C1F4AD16AC8EF6359B,
+			); path = Models; sourceTree = "<group>";};
+		2AC8BA37DAC32D5437812408 = {isa = PBXGroup; children = (
+				FB98C6CDCF86E3E2CE0B485C,
+				7D1DC474D48E62EF6425EB22,
+			); name = Products; sourceTree = "<group>";};
+		30C40C5778D9B03C26F37582 = {isa = PBXGroup; children = (
+				8D47D01D6E97F23C26FEE7FE,
+			); path = QuickAdd; sourceTree = "<group>";};
+		369F27E92289E35E569334CC = {isa = PBXGroup; children = (
+				5BBD0006D62748AA2F1570BD,
+			); path = Shop; sourceTree = "<group>";};
+		43B21F26F67F6C52CCB1BC42 = {isa = PBXGroup; children = (
+				B7382E8A86FCE1F4D7E5918E,
+				D7494284FCCA25BE73DD5F34,
+				9E5DE68E08A78676266786C5,
+			); path = Domain; sourceTree = "<group>";};
+		4EAE695AD1F489F78EA3E1C6 = {isa = PBXGroup; children = (
+				9AF543BA66A5458D41E85EA2,
+				6D8D54F1889FD9BAD52DEE62,
+				2AC8BA37DAC32D5437812408,
+			); sourceTree = "<group>";};
+		538E907CC4957C1F26FCE552 = {isa = PBXGroup; children = (
+				9D23390A9EF71C7FF15EEFD1,
+			); path = Done; sourceTree = "<group>";};
+		6D8D54F1889FD9BAD52DEE62 = {isa = PBXGroup; children = (
+				318CB5C30C64FCD90D180807,
+			); path = IsleTests; sourceTree = "<group>";};
+		6EAF83C224007A36FA9AB826 = {isa = PBXGroup; children = (
+				A83838578B9699E81D725AD3,
+			); path = Edit; sourceTree = "<group>";};
+		7A29BAF49B9D10FBF287F904 = {isa = PBXGroup; children = (
+				B17DB5081FBBD69FA2A0AB07,
+				538E907CC4957C1F26FCE552,
+				6EAF83C224007A36FA9AB826,
+				055EDE3095D58FC19C212647,
+				048B9C867C3A9C2FB303D0B3,
+				91D73E9B0BA3E8E9E2AAECE8,
+				10B1475BEE0A6A61DE3E522E,
+				30C40C5778D9B03C26F37582,
+				8348832F1089A581FE151309,
+				8CF158AFB5B6E99C624C12EA,
+				369F27E92289E35E569334CC,
+				7ACAEEDAFADDE301DFD3DEDC,
+				BF32C60B8DCF50A628E7BC6F,
+				DA1920A03DD5BE7D4146D85A,
+			); path = Features; sourceTree = "<group>";};
+		7ACAEEDAFADDE301DFD3DEDC = {isa = PBXGroup; children = (
+				284D5ACABBFE40F6B7C36AE1,
+			); path = Sunday; sourceTree = "<group>";};
+		8348832F1089A581FE151309 = {isa = PBXGroup; children = (
+				56B67822BC387BB01CDFBDFD,
+			); path = Search; sourceTree = "<group>";};
+		88B3C05A3B6CD62BD0B498FE = {isa = PBXGroup; children = (
+				68373AF028CED6972259F8D0,
+				FF5E518AC2B71E481F2E8431,
+				A004C73961E19E4E5051912E,
+				671D31F54796E1E8406D46AE,
+			); path = Services; sourceTree = "<group>";};
+		8CF158AFB5B6E99C624C12EA = {isa = PBXGroup; children = (
+				48EE90AFA6319E48BC93AB52,
+				E4F012CB195561FB9E3E8B0A,
+			); path = Settings; sourceTree = "<group>";};
+		91D73E9B0BA3E8E9E2AAECE8 = {isa = PBXGroup; children = (
+				C145AF1DFBEEEB58A7D8E489,
+			); path = Isle; sourceTree = "<group>";};
+		9AF543BA66A5458D41E85EA2 = {isa = PBXGroup; children = (
+				F26A11A76A3FCD16FC868FCB,
+				A532D0501B25CC790004FEF7,
+				43B21F26F67F6C52CCB1BC42,
+				7A29BAF49B9D10FBF287F904,
+				224E6732C7CB2CDE4EEB0ECE,
+				88B3C05A3B6CD62BD0B498FE,
+				F882CA07E277A6F18F6E5946,
+			); path = Isle; sourceTree = "<group>";};
+		A532D0501B25CC790004FEF7 = {isa = PBXGroup; children = (
+				0C94DB3BA5B30E24E4C81327,
+				99E7DFACDED5E3E75DE22EDB,
+				9B4242DBC5C109D0E73A2AF2,
+			); path = Design; sourceTree = "<group>";};
+		B17DB5081FBBD69FA2A0AB07 = {isa = PBXGroup; children = (
+				17FACD2FBDCA734D6AB2C6D4,
+			); path = Checkin; sourceTree = "<group>";};
+		BF32C60B8DCF50A628E7BC6F = {isa = PBXGroup; children = (
+				0619BBDAAA0878C365F441BE,
+				ECEA232A38A2C13EC0FC3766,
+			); path = Today; sourceTree = "<group>";};
+		DA1920A03DD5BE7D4146D85A = {isa = PBXGroup; children = (
+				0A355EB88D93C9F60EE738A2,
+			); path = Week; sourceTree = "<group>";};
+		F26A11A76A3FCD16FC868FCB = {isa = PBXGroup; children = (
+				D4A69B13AD194E101D015DF9,
+				291DE220B6C5C1D63ADFD0C9,
+				316CA38DB4BB1DDA106ACF0F,
+			); path = App; sourceTree = "<group>";};
+		F882CA07E277A6F18F6E5946 = {isa = PBXGroup; children = (
+				6497B9CF0BD0B5BC40283325,
+			); path = Resources; sourceTree = "<group>";};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		203A1CA9B31E0363ABB7796D = {isa = PBXNativeTarget; buildConfigurationList = 6806CF7B08C9A4DEF250C948; buildPhases = (
+				461B1FE938757D25CAF1D55A,
+				38FB6217D7FC577538742B79,
+				83A2E712880D2B7F5FC4A885,
+			); buildRules = (
+			); dependencies = (
+			); name = Isle; productName = Isle; productReference = FB98C6CDCF86E3E2CE0B485C; productType = "com.apple.product-type.application";};
+		3CD7D59903659BEE5CD80274 = {isa = PBXNativeTarget; buildConfigurationList = A5459CF21EF7A48607DDD8C3; buildPhases = (
+				D6442198FC178896457727CB,
+				5A0D24819E0C881F947A350C,
+				FD2AEF10E8CFA2EB52B5AFAA,
+			); buildRules = (
+			); dependencies = (
+				E54DEBD65D8142E7785275AA,
+			); name = IsleTests; productName = IsleTests; productReference = 7D1DC474D48E62EF6425EB22; productType = "com.apple.product-type.bundle.unit-test";};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F86FAA6BBF9AC94A7E4595 = {isa = PBXProject; attributes = { BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 1600; LastUpgradeCheck = 1600; TargetAttributes = { 203A1CA9B31E0363ABB7796D = { CreatedOnToolsVersion = 16.0; }; 3CD7D59903659BEE5CD80274 = { CreatedOnToolsVersion = 16.0; TestTargetID = 203A1CA9B31E0363ABB7796D; }; }; }; buildConfigurationList = A1806D8FE767B99D399E13F3; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (
+				en,
+				Base,
+			); mainGroup = 4EAE695AD1F489F78EA3E1C6; productRefGroup = 2AC8BA37DAC32D5437812408; projectDirPath = ""; projectRoot = ""; targets = (
+				203A1CA9B31E0363ABB7796D,
+				3CD7D59903659BEE5CD80274,
+			);};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		83A2E712880D2B7F5FC4A885 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (
+				EBE8F7E5912F97BF00CF5177,
+			); runOnlyForDeploymentPostprocessing = 0;};
+		FD2AEF10E8CFA2EB52B5AFAA = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (
+			); runOnlyForDeploymentPostprocessing = 0;};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		461B1FE938757D25CAF1D55A = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+				8616886A4071107064996E13,
+				7C8EFE78C12577B5A27D9273,
+				BCD93A3FA186368147C891FD,
+				7E8213A07BF61DFB55B138E8,
+				05C32A275C7A6BD05554BF99,
+				799B1BB2B72820872638CC45,
+				C65785D848A3D26C28B743CC,
+				7B47CE64243F562DF18938A1,
+				AA5C3FC121A6100B2D3F318C,
+				CC4764108756A4A786C585C5,
+				6ACC99656BFBBD592D8155B0,
+				27C7936C96A7C8A3CD8A659F,
+				2F0A122AC6B0118B8062117B,
+				39F5440C036E7976B06D06A1,
+				17A2E2189F23D7088147A580,
+				34775FB6225021749091B775,
+				45A9F73EA82DC9F544395AB0,
+				DC9E9B55798C4F6F7667F8EF,
+				2230427DBB16E02D77F15841,
+				E87AA07EBD7D5A6943648181,
+				DC8175143D45D6895ED5A46E,
+				B104A3F0E8DF76419E3E7C64,
+				8EED20707A6709743DE43429,
+				C5174C0DE5622FEFE5CAA22E,
+				6EC3C37A8F037C4FB1BEC63C,
+				B5CEA48B9E4CDDDDD00FF9C7,
+				D64337F63AE9226C6F496D64,
+				114695DC5B6F2B51C610EC4C,
+				6800B366108C3942D4EA07C8,
+				636368FEA0C1247C5FAA4B0B,
+				FF61A78176A8CE02095125D5,
+				C87ECFBFEB6BAC46A551B074,
+			); runOnlyForDeploymentPostprocessing = 0;};
+		D6442198FC178896457727CB = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+				DD5E171A1A898D009AA77638,
+			); runOnlyForDeploymentPostprocessing = 0;};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E54DEBD65D8142E7785275AA = {isa = PBXTargetDependency; target = 203A1CA9B31E0363ABB7796D; targetProxy = 431387EB7262E1CFC79B125E;};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2E90775B077C2FEDFB3BF59E = {isa = XCBuildConfiguration; buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "1";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = "17.0";
+				MARKETING_VERSION = "1.0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.savonstudios.isleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = "5.0";
+				TARGETED_DEVICE_FAMILY = "1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Isle.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Isle";
+			}; name = Release;};
+		48BC085BBF9BBAAE51532390 = {isa = XCBuildConfiguration; buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "1";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = "17.0";
+				MARKETING_VERSION = "1.0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.savonstudios.isleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = "5.0";
+				TARGETED_DEVICE_FAMILY = "1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Isle.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Isle";
+			}; name = Debug;};
+		5EFECA87EDB6D40348F6D7C5 = {isa = XCBuildConfiguration; buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "1";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Isle;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Isle shows your events next to your tasks so Pip can plan around them.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Isle shows your events next to your tasks so Pip can plan around them.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = "1.0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.savonstudios.isle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = "5.0";
+				TARGETED_DEVICE_FAMILY = "1";
+			}; name = Debug;};
+		6AFE22E70BE079CBB63426F8 = {isa = XCBuildConfiguration; buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = "17.0";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			}; name = Release;};
+		A08235453F87891B35190264 = {isa = XCBuildConfiguration; buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "1";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Isle;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Isle shows your events next to your tasks so Pip can plan around them.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Isle shows your events next to your tasks so Pip can plan around them.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = "1.0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.savonstudios.isle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = "5.0";
+				TARGETED_DEVICE_FAMILY = "1";
+			}; name = Release;};
+		D48F58F8CA231B2301441318 = {isa = XCBuildConfiguration; buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = "0";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = "17.0";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			}; name = Debug;};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6806CF7B08C9A4DEF250C948 = {isa = XCConfigurationList; buildConfigurations = (
+				5EFECA87EDB6D40348F6D7C5,
+				A08235453F87891B35190264,
+			); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;};
+		A1806D8FE767B99D399E13F3 = {isa = XCConfigurationList; buildConfigurations = (
+				D48F58F8CA231B2301441318,
+				6AFE22E70BE079CBB63426F8,
+			); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;};
+		A5459CF21EF7A48607DDD8C3 = {isa = XCConfigurationList; buildConfigurations = (
+				48BC085BBF9BBAAE51532390,
+				2E90775B077C2FEDFB3BF59E,
+			); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595;
+}

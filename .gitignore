@@ -1,0 +1,8 @@
+build/
+DerivedData/
+*.xcresult
+Payload/
+*.ipa
+xcuserdata/
+.DS_Store
+tools/__pycache__/

@@ -1,0 +1,72 @@
+Command line invocation:
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/xcodebuild build -project Isle.xcodeproj -scheme Isle -configuration Release -sdk iphoneos -destination generic/platform=iOS -derivedDataPath build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = 
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_REQUIRED = NO
+    SDKROOT = iphoneos18.5
+
+note: Using codesigning identity override: 
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'Isle' in project 'Isle' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/runner/work/isle-app/isle-app/Isle/Resources/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 2de24b3fe91bacc99756696c19d46f93
+Build description path: /Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex/XCBuildData/2de24b3fe91bacc99756696c19d46f93.xcbuilddata
+error: Multiple commands produce '/Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex/Isle.build/Release-iphoneos/Isle.build/Objects-normal/arm64/RootView.stringsdata'
+    note: Target 'Isle' (project 'Isle') has Swift tasks blocking downstream compilation
+    note: Target 'Isle' (project 'Isle') has Swift tasks blocking downstream compilation
+error: Multiple commands produce '/Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex/Isle.build/Release-iphoneos/Isle.build/Objects-normal/arm64/Components.stringsdata'
+    note: Target 'Isle' (project 'Isle') has Swift tasks blocking downstream compilation
+    note: Target 'Isle' (project 'Isle') has Swift tasks blocking downstream compilation
+error: Multiple commands produce '/Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex/Isle.build/Release-iphoneos/Isle.build/Objects-normal/arm64/Theme.stringsdata'
+    note: Target 'Isle' (project 'Isle') has Swift tasks blocking downstream compilation
+    note: Target 'Isle' (project 'Isle') has Swift tasks blocking downstream compilation
+CreateBuildDirectory /Users/runner/work/isle-app/isle-app/build/Build/Products
+    cd /Users/runner/work/isle-app/isle-app/Isle.xcodeproj
+    builtin-create-build-directory /Users/runner/work/isle-app/isle-app/build/Build/Products
+
+CreateBuildDirectory /Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex
+    cd /Users/runner/work/isle-app/isle-app/Isle.xcodeproj
+    builtin-create-build-directory /Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex
+
+ClangStatCache /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk /Users/runner/work/isle-app/isle-app/build/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
+    cd /Users/runner/work/isle-app/isle-app/Isle.xcodeproj
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -o /Users/runner/work/isle-app/isle-app/build/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
+
+note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'Isle' from project 'Isle')
+warning: duplicate output file '/Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex/Isle.build/Release-iphoneos/Isle.build/Objects-normal/arm64/RootView.stringsdata' on task: SwiftDriver Compilation Requirements Isle normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Isle' from project 'Isle')
+warning: duplicate output file '/Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex/Isle.build/Release-iphoneos/Isle.build/Objects-normal/arm64/Components.stringsdata' on task: SwiftDriver Compilation Requirements Isle normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Isle' from project 'Isle')
+warning: duplicate output file '/Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex/Isle.build/Release-iphoneos/Isle.build/Objects-normal/arm64/Theme.stringsdata' on task: SwiftDriver Compilation Requirements Isle normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Isle' from project 'Isle')
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Building project Isle with scheme Isle and configuration Release
+(1 failure)

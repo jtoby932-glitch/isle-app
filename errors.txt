@@ -1,0 +1,3 @@
+error: Multiple commands produce '/Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex/Isle.build/Release-iphoneos/Isle.build/Objects-normal/arm64/RootView.stringsdata'
+error: Multiple commands produce '/Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex/Isle.build/Release-iphoneos/Isle.build/Objects-normal/arm64/Components.stringsdata'
+error: Multiple commands produce '/Users/runner/work/isle-app/isle-app/build/Build/Intermediates.noindex/Isle.build/Release-iphoneos/Isle.build/Objects-normal/arm64/Theme.stringsdata'

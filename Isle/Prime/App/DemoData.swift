@@ -1,0 +1,172 @@
+#if DEBUG
+import Foundation
+import SwiftData
+import SwiftUI
+
+/// Debug-only sample data for screenshots and simulator checks. Never compiled into release builds.
+/// Launch arguments: `-demo` seeds six weeks of training, `-tab <home|workouts|exercises|rankings|profile>`
+/// picks a tab, `-activeWorkout` opens a workout in progress, `-route <name>` opens a screen in a sheet,
+/// `-reveal <slug> -revealStage <analysis|reveal|breakdown>` shows a frozen rank reveal,
+/// `-sheet <search|presets>` opens a global sheet.
+@MainActor
+enum DemoData {
+    private static var arguments: [String] { ProcessInfo.processInfo.arguments }
+
+    static var isRequested: Bool { arguments.contains("-demo") }
+
+    static func value(after flag: String) -> String? {
+        guard let index = arguments.firstIndex(of: flag), arguments.indices.contains(index + 1) else { return nil }
+        return arguments[index + 1]
+    }
+
+    static func apply(context: ModelContext, store: TrainingStore, appState: AppState) {
+        guard isRequested else { return }
+        seed(context: context, store: store)
+        switch value(after: "-tab") {
+        case "workouts": appState.selectedTab = .workouts
+        case "exercises": appState.selectedTab = .exercises
+        case "rankings": appState.selectedTab = .rankings
+        case "profile": appState.selectedTab = .profile
+        default: appState.selectedTab = .home
+        }
+        if let route = value(after: "-route") {
+            switch route {
+            case "analytics": appState.debugRoute = .analytics
+            case "muscleMap": appState.debugRoute = .muscleMap
+            case "records": appState.debugRoute = .records
+            case "methodology": appState.debugRoute = .methodology
+            case "achievements": appState.debugRoute = .achievements
+            case "preferences": appState.debugRoute = .preferences
+            case "allExercises": appState.debugRoute = .allExercises
+            default:
+                if route.hasPrefix("rank:") { appState.debugRoute = .exerciseRank(String(route.dropFirst(5))) }
+                if route.hasPrefix("exercise:") { appState.debugRoute = .exercise(String(route.dropFirst(9))) }
+                if route.hasPrefix("muscle:"), let muscle = MuscleGroup(rawValue: String(route.dropFirst(7))) { appState.debugRoute = .muscle(muscle) }
+                if route.hasPrefix("category:"), let muscle = MuscleGroup(rawValue: String(route.dropFirst(9))) { appState.debugRoute = .category(muscle) }
+            }
+        }
+        switch value(after: "-sheet") {
+        case "search": appState.showSearch = true
+        case "presets": appState.showSplitPresets = true
+        default: break
+        }
+        if let slug = value(after: "-guide") { appState.guideRequest = GuideRequest(id: slug) }
+        if arguments.contains("-activeWorkout") { startWorkout(context: context, store: store, appState: appState) }
+        if let slug = value(after: "-reveal") { showReveal(slug: slug, context: context, store: store, appState: appState) }
+        if arguments.contains("-tour") { tour(appState: appState) }
+    }
+
+    /// Walks through the tabs on a timer so a screen recording shows the transitions.
+    private static func tour(appState: AppState) {
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 2_200_000_000)
+            for tab in AppTab.allCases.dropFirst() {
+                withAnimation(.spring(response: 0.42, dampingFraction: 0.78)) { appState.selectedTab = tab }
+                try? await Task.sleep(nanoseconds: 2_000_000_000)
+            }
+            withAnimation(.spring(response: 0.42, dampingFraction: 0.78)) { appState.selectedTab = .home }
+        }
+    }
+
+    private static func showReveal(slug: String, context: ModelContext, store: TrainingStore, appState: AppState) {
+        let exercises = (try? context.fetch(FetchDescriptor<Exercise>())) ?? []
+        guard let exercise = exercises.first(where: { $0.slug == slug }) else { return }
+        let rank = RankingService.rank(for: exercise, history: store.history, submissions: [], scale: 1)
+        guard let result = rank.currentResult ?? rank.peak else { return }
+        let stage = value(after: "-revealStage") ?? "breakdown"
+        appState.revealStage = RankRevealView.Stage(rawValue: ["analysis", "reveal", "breakdown"].firstIndex(of: stage) ?? 0) ?? .analysis
+        appState.revealFrozen = stage != "play"
+        appState.reveal = RankingService.reveal(for: result, exercise: exercise, history: store.history, rankings: [], unit: .kg, scale: 1)
+    }
+
+    private static let baseWeights: [String: Double] = [
+        "barbell-bench-press": 70, "incline-dumbbell-press": 24, "overhead-press": 45, "dumbbell-lateral-raise": 10,
+        "cable-triceps-pushdown": 30, "pull-up": 0, "barbell-bent-over-row": 65, "seated-cable-row": 60, "face-pull": 20,
+        "barbell-curl": 30, "hammer-curl": 14, "barbell-back-squat": 100, "romanian-deadlift": 90, "leg-press": 160,
+        "leg-extension": 50, "lying-leg-curl": 40, "seated-leg-curl": 40, "standing-calf-raise": 80,
+        "dumbbell-shoulder-press": 22, "overhead-cable-triceps-extension": 22,
+    ]
+
+    private static func seed(context: ModelContext, store: TrainingStore) {
+        let profile = DataService.profile(in: context)
+        guard !profile.hasCompletedOnboarding else { return }
+        let calendar = Calendar.prime
+        let now = Date()
+        profile.name = "Jude"
+        profile.weightUnit = .kg
+        profile.experience = .intermediate
+        profile.interests = [.strength, .muscle]
+        profile.preferredWeekdays = [0, 2, 4]
+        profile.weeklyGoal = 3
+        profile.hasCompletedOnboarding = true
+        profile.hasCreatedFirstWorkout = true
+
+        for week in 0...6 {
+            let date = calendar.date(byAdding: .day, value: -7 * (6 - week), to: now) ?? now
+            DataService.logBodyweight(81.6 - Double(week) * 0.22, on: date, context: context)
+        }
+        store.refresh(context)
+
+        let exercises = (try? context.fetch(FetchDescriptor<Exercise>())) ?? []
+        guard let preset = SplitPreset.all.first(where: { $0.id == "ppl3" }) else { return }
+        _ = ScheduleService.apply(preset, start: 0, mode: .replace, exercises: exercises, restSeconds: 90, context: context)
+        let days = ScheduleService.ensureWeek(context: context)
+        let thisWeek = calendar.startOfWeek(for: now)
+
+        for week in 0..<6 {
+            for weekday in [0, 2, 4] {
+                guard let start = calendar.date(byAdding: .day, value: weekday - 7 * (5 - week), to: thisWeek),
+                      let time = calendar.date(bySettingHour: 18, minute: 5 + week * 3, second: 0, of: start),
+                      time < calendar.startOfDay(for: now),
+                      let plan = days.first(where: { $0.weekday == weekday })?.plan else { continue }
+                if week == 2 && weekday == 4 { continue } // one missed session keeps the data honest
+                let session = WorkoutService.start(plan: plan, context: context, history: store.history, now: time)
+                session.bodyweightKg = 81.6 - Double(week) * 0.22
+                session.readiness = week % 3 == 0 ? nil : 3 + (week + weekday) % 3
+                var clock = time
+                for item in session.sortedExercises {
+                    let base = baseWeights[item.exerciseSlug] ?? 20
+                    let target = item.targetReps ?? 8
+                    let sets = item.sortedSets
+                    for (index, set) in sets.enumerated() {
+                        clock = clock.addingTimeInterval(TimeInterval(item.restSeconds + 45))
+                        if base == 0 {
+                            set.weightKg = 0
+                            set.reps = max(1, 6 + week / 2 - (index == sets.count - 1 ? 1 : 0))
+                        } else {
+                            let progressed = base * (1 + 0.025 * Double(week))
+                            set.weightKg = (progressed / 2.5).rounded() * 2.5
+                            set.reps = max(1, target - (index == sets.count - 1 ? 1 : 0))
+                        }
+                        set.isCompleted = true
+                        set.completedAt = clock
+                    }
+                }
+                session.status = .completed
+                session.endedAt = clock.addingTimeInterval(120)
+            }
+        }
+        try? context.save()
+        store.refresh(context)
+        RecordService.rebuildAll(context: context, history: store.history, exercises: exercises, scale: 1)
+    }
+
+    private static func startWorkout(context: ModelContext, store: TrainingStore, appState: AppState) {
+        guard appState.activeSession == nil else { return }
+        let plans = (try? context.fetch(FetchDescriptor<WorkoutPlan>(sortBy: [SortDescriptor(\.createdAt)]))) ?? []
+        guard let plan = plans.first else { return }
+        let session = WorkoutService.start(plan: plan, context: context, history: store.history, now: Date().addingTimeInterval(-1260))
+        if let item = session.sortedExercises.first {
+            for set in item.sortedSets.prefix(2) {
+                let suggestion = WorkoutService.suggestion(for: set, in: item, history: store.history)
+                set.weightKg = (suggestion.weightKg ?? 60) + 2.5
+                set.reps = suggestion.reps ?? 6
+                _ = try? WorkoutService.complete(set, in: item, session: session, history: store.history, context: context)
+            }
+            WorkoutService.startRest(session, seconds: 120, label: item.exerciseName, notify: false)
+        }
+        try? context.save()
+        appState.begin(session)
+    }
+}
+#endif

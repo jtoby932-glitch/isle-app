@@ -55,7 +55,7 @@ struct WeekView: View {
                                 .buttonStyle(PillButtonStyle(height: 34))
                         }
                         ForEach(priorities.prefix(3)) { p in
-                            Chip(text: p.title, dot: T.primary)
+                            IsleChip(text: p.title, dot: T.primary)
                         }
                     }
                 }
@@ -122,7 +122,7 @@ struct WeekView: View {
                             Text("\(Fmt.duration(load)) / \(Fmt.duration(cap))")
                                 .font(.isle(.caption, .heavy)).foregroundStyle(over ? T.warnText : T.muted).monospacedDigit()
                         }
-                        ProgressBar(value: Double(load) / Double(max(1, cap)), color: over ? T.warn : T.ink)
+                        IsleProgressBar(value: Double(load) / Double(max(1, cap)), color: over ? T.warn : T.ink)
                         HStack(spacing: 4) {
                             ForEach(habits.filter { !$0.paused }.prefix(8)) { h in
                                 let done = logs.contains { $0.habitID == h.id && $0.dayKey == d }

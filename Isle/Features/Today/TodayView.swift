@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 /// One line on a day: a task, a habit or a calendar event.
-struct DayRow: Identifiable {
+struct IsleDayRow: Identifiable {
     enum Kind {
         case task(TaskItem)
         case habit(Habit)
@@ -23,8 +23,8 @@ struct DayRow: Identifiable {
 
 enum DayRows {
     @MainActor
-    static func build(day: Int, tasks: [TaskItem], habits: [Habit], logs: [HabitLog], events: [CalEvent], lowBattery: Bool) -> [DayRow] {
-        var rows: [DayRow] = []
+    static func build(day: Int, tasks: [TaskItem], habits: [Habit], logs: [HabitLog], events: [CalEvent], lowBattery: Bool) -> [IsleDayRow] {
+        var rows: [IsleDayRow] = []
         let wd = Day.weekday(day)
         for t in tasks where t.dayKey == day {
             var bits: [String] = []
@@ -33,7 +33,7 @@ enum DayRows {
             let steps = t.steps
             if !steps.isEmpty { bits.append("\(steps.filter { $0.done }.count)/\(steps.count) steps") }
             if let s = t.startMinutes { bits.append("until \(Fmt.clock(s + t.minutes))") }
-            rows.append(DayRow(id: "t-\(t.id)", kind: .task(t), start: t.startMinutes, minutes: t.minutes,
+            rows.append(IsleDayRow(id: "t-\(t.id)", kind: .task(t), start: t.startMinutes, minutes: t.minutes,
                                title: t.title, sub: bits.joined(separator: " · "),
                                color: t.priority ? T.primary : T.habit(4), done: t.isDone))
         }
@@ -49,12 +49,12 @@ enum DayRows {
             if !h.isDaily { sub += " · \(weekCount) of \(h.targetPerWeek) this week" }
             if let chain = h.chainAfterID, let first = habits.first(where: { $0.id == chain }) { sub += " · after \(first.name.lowercased())" }
             if useLow { sub = "Low-battery version · double shells" }
-            rows.append(DayRow(id: "h-\(h.id)", kind: .habit(h), start: h.timeMinutes, minutes: h.minutes,
+            rows.append(IsleDayRow(id: "h-\(h.id)", kind: .habit(h), start: h.timeMinutes, minutes: h.minutes,
                                title: title, sub: sub, color: T.habit(h.colorIndex), done: doneToday))
         }
         for e in events {
             let sub = e.allDay ? "Calendar · all day" : "Calendar · \(Fmt.duration(e.minutes))"
-            rows.append(DayRow(id: "e-\(e.id)", kind: .event(e), start: e.allDay ? nil : e.startMinutes, minutes: e.minutes,
+            rows.append(IsleDayRow(id: "e-\(e.id)", kind: .event(e), start: e.allDay ? nil : e.startMinutes, minutes: e.minutes,
                                title: e.title, sub: sub, color: T.muted.opacity(0.6), done: false))
         }
         return rows.sorted { a, b in
@@ -93,7 +93,7 @@ struct TodayView: View {
         return CalendarService.shared.events(for: today, enabled: settings?.calendarOn ?? false)
     }
 
-    private var rows: [DayRow] {
+    private var rows: [IsleDayRow] {
         DayRows.build(day: today, tasks: tasks, habits: habits, logs: logs, events: events, lowBattery: lowBattery)
     }
 
@@ -125,16 +125,18 @@ struct TodayView: View {
 
     // MARK: header
 
-    private func header(_ all: [DayRow]) -> some View {
+    private func header(_ all: [IsleDayRow]) -> some View {
         let planned = all.filter { $0.start != nil || !$0.isEvent }.reduce(0) { $0 + $1.minutes }
         let cap = settings?.capacity(forWeekday: Day.weekday(today)) ?? 420
         return HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 2) {
                 Text(Day.title(today)).font(.isle(.largeTitle)).foregroundStyle(T.ink)
+                    .lineLimit(1).minimumScaleFactor(0.7)
                 Text("\(Fmt.duration(planned)) planned · \(Fmt.duration(max(0, cap - planned))) free")
                     .font(.isle(.subheadline, .heavy)).foregroundStyle(T.muted)
             }
             Spacer()
+            SwitchToPrimeButton()
             Button { app.showShop = true } label: { ShellBadge(count: isle?.shells ?? 0) }
                 .buttonStyle(PressStyle())
                 .accessibilityHint("Opens the Shell Shop")
@@ -224,7 +226,7 @@ struct TodayView: View {
         .buttonStyle(PressStyle())
     }
 
-    private func pipStrip(checkable: [DayRow], doneCount: Int, allDone: Bool) -> some View {
+    private func pipStrip(checkable: [IsleDayRow], doneCount: Int, allDone: Bool) -> some View {
         let next = checkable.first { !$0.done }
         let name = isle?.pipName ?? "Pip"
         let message: String
@@ -247,7 +249,7 @@ struct TodayView: View {
                     .animation(.easeOut(duration: 0.2), value: message)
                 if !checkable.isEmpty {
                     HStack(spacing: 8) {
-                        ProgressBar(value: Double(doneCount) / Double(max(1, checkable.count)))
+                        IsleProgressBar(value: Double(doneCount) / Double(max(1, checkable.count)))
                         Text("\(doneCount) of \(checkable.count)").font(.isle(.caption, .heavy)).foregroundStyle(T.muted).monospacedDigit()
                     }
                 }
@@ -277,7 +279,7 @@ struct TodayView: View {
     // MARK: content
 
     @ViewBuilder
-    private func content(_ all: [DayRow]) -> some View {
+    private func content(_ all: [IsleDayRow]) -> some View {
         switch tab {
         case 0: timeline(all)
         case 1:
@@ -290,7 +292,7 @@ struct TodayView: View {
     }
 
     @ViewBuilder
-    private func rowsList(_ list: [DayRow], showTime: Bool, emptyText: String = "Nothing here.") -> some View {
+    private func rowsList(_ list: [IsleDayRow], showTime: Bool, emptyText: String = "Nothing here.") -> some View {
         if list.isEmpty {
             EmptyHint(title: "All clear", message: emptyText)
         } else {
@@ -300,7 +302,7 @@ struct TodayView: View {
         }
     }
 
-    private func timeline(_ all: [DayRow]) -> some View {
+    private func timeline(_ all: [IsleDayRow]) -> some View {
         let timed = all.filter { $0.start != nil }
         let untimed = all.filter { $0.start == nil }
         let now = Day.minuteOfDay
@@ -338,7 +340,7 @@ struct TodayView: View {
         var task: TaskItem
     }
 
-    private func gapSuggestion(timed: [DayRow]) -> Gap? {
+    private func gapSuggestion(timed: [IsleDayRow]) -> Gap? {
         let blocks = timed.filter { !$0.done }.compactMap { r -> (start: Int, minutes: Int)? in
             guard let s = r.start else { return nil }
             return (s, r.minutes)
@@ -375,7 +377,7 @@ struct TodayView: View {
 
     // MARK: rows
 
-    private func rowView(_ r: DayRow, showTime: Bool) -> some View {
+    private func rowView(_ r: IsleDayRow, showTime: Bool) -> some View {
         HStack(alignment: .center, spacing: 8) {
             if showTime {
                 Text(r.start.map { Fmt.clock($0) } ?? "")
@@ -391,7 +393,7 @@ struct TodayView: View {
         .transition(.asymmetric(insertion: .move(edge: .top).combined(with: .opacity), removal: .opacity))
     }
 
-    private func open(_ r: DayRow) {
+    private func open(_ r: IsleDayRow) {
         switch r.kind {
         case .task(let t): Feedback.play(.tap); app.editingTask = t
         case .habit(let h): Feedback.play(.tap); app.openHabit = h
@@ -399,7 +401,7 @@ struct TodayView: View {
         }
     }
 
-    private func focus(_ r: DayRow) {
+    private func focus(_ r: IsleDayRow) {
         if case .task(let t) = r.kind {
             Feedback.play(.tap)
             app.focusTask = t
@@ -407,7 +409,7 @@ struct TodayView: View {
         }
     }
 
-    private func toggle(_ r: DayRow) {
+    private func toggle(_ r: IsleDayRow) {
         let becoming = !r.done
         var reward = 10
         switch r.kind {
@@ -454,7 +456,7 @@ struct NowDot: View {
 
 /// The card for one row: colour bar, title, detail, Focus button, tick.
 struct DayRowCard: View {
-    let row: DayRow
+    let row: IsleDayRow
     var floating: Int?
     var onOpen: () -> Void
     var onToggle: () -> Void

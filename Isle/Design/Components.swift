@@ -39,7 +39,7 @@ struct CheckCircle: View {
     }
 }
 
-struct ProgressBar: View {
+struct IsleProgressBar: View {
     var value: Double
     var color: Color = T.good
     var height: CGFloat = 8
@@ -108,7 +108,7 @@ struct ShellBadge: View {
     }
 }
 
-struct Tag: View {
+struct IsleTag: View {
     var text: String
     var fill: Color = T.line
     var body: some View {
@@ -121,7 +121,7 @@ struct Tag: View {
     }
 }
 
-struct Chip: View {
+struct IsleChip: View {
     var text: String
     var dot: Color? = nil
     var fill: Color = T.surface
@@ -162,7 +162,7 @@ struct ToggleChip: View {
 }
 
 /// Wraps children onto new lines like text.
-struct FlowLayout: Layout {
+struct IsleFlowLayout: Layout {
     var spacing: CGFloat = 6
 
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
@@ -264,7 +264,7 @@ struct ToastData: Equatable {
     static func == (a: ToastData, b: ToastData) -> Bool { a.id == b.id }
 }
 
-struct ToastView: View {
+struct IsleToastView: View {
     var toast: ToastData
     var onUndo: () -> Void
 

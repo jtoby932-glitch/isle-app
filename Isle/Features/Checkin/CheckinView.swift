@@ -71,7 +71,7 @@ struct CheckinView: View {
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Anything else going on?").font(.isle(.headline)).foregroundStyle(T.ink)
-                    FlowLayout(spacing: 7) {
+                    IsleFlowLayout(spacing: 7) {
                         ForEach(moodOptions, id: \.self) { m in
                             ToggleChip(text: m, on: moods.contains(m), onFill: Color(hex: 0xFFB4A2)) {
                                 if moods.contains(m) { moods.remove(m); Feedback.play(.undo) } else { moods.insert(m); Feedback.play(.tick) }
@@ -84,8 +84,8 @@ struct CheckinView: View {
                     Text(c.title).font(.isle(.title3, .heavy))
                     Text(c.body + (moods.contains("Anxious") ? " Take a breather between things today." : ""))
                         .font(.isle(.subheadline, .semibold))
-                    FlowLayout(spacing: 6) {
-                        ForEach(c.tags, id: \.self) { t in Tag(text: t, fill: T.surface) }
+                    IsleFlowLayout(spacing: 6) {
+                        ForEach(c.tags, id: \.self) { t in IsleTag(text: t, fill: T.surface) }
                     }
                 }
                 .foregroundStyle(T.ink)

@@ -2,7 +2,7 @@ import Foundation
 import UserNotifications
 
 /// Local notifications only. Rebuilt from scratch whenever the plan changes (cheap: at most a few dozen).
-enum NotificationService {
+enum IsleNotifications {
     static let center = UNUserNotificationCenter.current()
 
     static func requestAuthorization() async -> Bool {
@@ -35,10 +35,9 @@ enum NotificationService {
     @MainActor
     static func reschedule(tasks: [TaskItem], habits: [Habit], settings: AppSettings, pipName: String) {
         guard settings.notificationsOn else {
-            center.removeAllPendingNotificationRequests()
+            replaceIsleRequests(with: [])
             return
         }
-        center.removeAllPendingNotificationRequests()
         let now = Date()
         let today = Day.today
         var items: [Planned] = []
@@ -116,8 +115,15 @@ enum NotificationService {
             schedule.append(Pending(id: "morning-checkin", content: c, trigger: UNCalendarNotificationTrigger(dateMatching: morning, repeats: true)))
         }
 
-        for s in schedule {
-            center.add(UNNotificationRequest(identifier: s.id, content: s.content, trigger: s.trigger))
+        replaceIsleRequests(with: schedule.map { UNNotificationRequest(identifier: $0.id, content: $0.content, trigger: $0.trigger) })
+    }
+
+    /// Clears Isle's own reminders and adds the new set. PRIME's ("prime.") and the focus timer are left alone.
+    private static func replaceIsleRequests(with requests: [UNNotificationRequest]) {
+        center.getPendingNotificationRequests { pending in
+            let mine = pending.map(\.identifier).filter { !$0.hasPrefix("prime.") && $0 != "focus-end" }
+            center.removePendingNotificationRequests(withIdentifiers: mine)
+            for r in requests { center.add(r) }
         }
     }
 

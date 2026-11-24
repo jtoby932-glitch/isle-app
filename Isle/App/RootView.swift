@@ -1,7 +1,8 @@
 import SwiftUI
 import SwiftData
+import UIKit
 
-struct RootView: View {
+struct IsleRootView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.modelContext) private var context
     @Environment(\.scenePhase) private var phase
@@ -20,6 +21,10 @@ struct RootView: View {
             }
         }
         .preferredColorScheme(scheme(settings?.themeRaw ?? "auto"))
+        .onAppear {
+            // Coming back from PRIME (always dark), make sure Auto follows the system again.
+            if scheme(settings?.themeRaw ?? "auto") == nil { Self.followSystemStyle() }
+        }
         .tint(T.ink)
         .onAppear {
             let store = Store(context: context)
@@ -37,6 +42,14 @@ struct RootView: View {
         }
     }
 
+    static func followSystemStyle() {
+        Task { @MainActor in
+            for scene in UIApplication.shared.connectedScenes {
+                (scene as? UIWindowScene)?.windows.forEach { $0.overrideUserInterfaceStyle = .unspecified }
+            }
+        }
+    }
+
     private func scheme(_ raw: String) -> ColorScheme? {
         switch raw {
         case "light": return .light
@@ -47,7 +60,7 @@ struct RootView: View {
 
     private func reschedule() {
         guard let s = settingsRows.first else { return }
-        NotificationService.reschedule(tasks: tasks, habits: habits, settings: s, pipName: isleRows.first?.pipName ?? "Pip")
+        IsleNotifications.reschedule(tasks: tasks, habits: habits, settings: s, pipName: isleRows.first?.pipName ?? "Pip")
     }
 }
 
@@ -69,7 +82,7 @@ struct MainView: View {
 
             VStack(spacing: 8) {
                 if let toast = app.toast {
-                    ToastView(toast: toast) { app.runUndo() }
+                    IsleToastView(toast: toast) { app.runUndo() }
                         .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
                 IsleTabBar()

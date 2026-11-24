@@ -71,7 +71,7 @@ struct EditTaskView: View {
 
                 VStack(alignment: .leading, spacing: 6) {
                     SectionLabel(text: "How long?")
-                    FlowLayout(spacing: 6) {
+                    IsleFlowLayout(spacing: 6) {
                         ForEach(durations, id: \.self) { m in
                             ToggleChip(text: Fmt.duration(m), on: task.minutes == m) {
                                 Feedback.play(.chip(durations.firstIndex(of: m) ?? 0))

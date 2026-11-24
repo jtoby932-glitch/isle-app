@@ -119,9 +119,9 @@ struct SundayPlanView: View {
         for h in habits where HabitStats.countInWeek(h, weekStart: lastStart, logs: logs) >= h.targetPerWeek { hit += 1 }
         return ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 6) {
-                Chip(text: "Last week: \(lastDone) done")
-                if !habits.isEmpty { Chip(text: "\(hit) of \(habits.count) habits on target") }
-                if rolled > 0 { Chip(text: "\(rolled) rolled over", fill: T.warnSoft) }
+                IsleChip(text: "Last week: \(lastDone) done")
+                if !habits.isEmpty { IsleChip(text: "\(hit) of \(habits.count) habits on target") }
+                if rolled > 0 { IsleChip(text: "\(rolled) rolled over", fill: T.warnSoft) }
             }
         }
     }
@@ -191,9 +191,9 @@ struct SundayPlanView: View {
                 Spacer()
                 Text(Fmt.duration(t.minutes)).font(.isle(.caption, .heavy)).foregroundStyle(T.muted)
                 if let d = placedDay {
-                    Tag(text: Day.shortName(d), fill: T.goodSoft).transition(.scale)
+                    IsleTag(text: Day.shortName(d), fill: T.goodSoft).transition(.scale)
                 } else {
-                    Tag(text: t.size.label)
+                    IsleTag(text: t.size.label)
                 }
             }
             .padding(.horizontal, 10)
@@ -261,7 +261,7 @@ struct SundayPlanView: View {
             app.showToast("Week planned! +\(Rewards.planning) shells")
         }
         s.save()
-        NotificationService.reschedule(tasks: tasks, habits: habits, settings: s.settings(), pipName: isle.pipName)
+        IsleNotifications.reschedule(tasks: tasks, habits: habits, settings: s.settings(), pipName: isle.pipName)
         Feedback.play(.celebrate)
         dismiss()
     }

@@ -53,7 +53,7 @@ struct HabitsView: View {
                                 VStack(alignment: .leading, spacing: 4) {
                                     HStack(spacing: 6) {
                                         Text(h.name).font(.isle(.body, .heavy)).foregroundStyle(T.ink).lineLimit(1)
-                                        if h.paused { Tag(text: "Paused") }
+                                        if h.paused { IsleTag(text: "Paused") }
                                     }
                                     HStack(spacing: 4) {
                                         ForEach(week, id: \.self) { d in

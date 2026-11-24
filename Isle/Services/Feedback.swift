@@ -97,7 +97,7 @@ enum Haptic {
     case light, medium, soft, rigid, success, warning
 }
 
-enum Haptics {
+enum IsleHaptics {
     static func play(_ h: Haptic) {
         switch h {
         case .light: UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -176,7 +176,7 @@ enum Feedback {
 
     static func play(_ s: Sfx) {
         if soundOn { SoundEngine.shared.play(s.name) }
-        if hapticsOn, let h = s.haptic { Haptics.play(h) }
+        if hapticsOn, let h = s.haptic { IsleHaptics.play(h) }
     }
 
     static func play(_ s: Sfx, after seconds: Double) {

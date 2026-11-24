@@ -115,7 +115,7 @@ struct OnboardingView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     (Text("Pick up to 3 starter seeds ").font(.isle(.subheadline, .heavy)) + Text("· \(picked.count)/3").font(.isle(.subheadline, .heavy)).foregroundColor(T.muted))
                         .foregroundStyle(T.ink)
-                    FlowLayout(spacing: 6) {
+                    IsleFlowLayout(spacing: 6) {
                         ForEach(0..<seeds.count, id: \.self) { i in
                             let on = picked.contains(i)
                             Button { toggleSeed(i) } label: {
@@ -372,7 +372,7 @@ struct PermissionsStage: View {
                 Feedback.play(ok ? .tick : .undo)
                 withAnimation(.easeInOut(duration: 0.35)) { page = 1 }
             } else {
-                let ok = await NotificationService.requestAuthorization()
+                let ok = await IsleNotifications.requestAuthorization()
                 let s = store.settings()
                 s.notificationsOn = ok
                 s.notifStyle = style

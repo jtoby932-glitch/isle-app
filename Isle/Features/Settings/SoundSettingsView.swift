@@ -63,7 +63,7 @@ struct SoundSettingsView: View {
                     }
                     .frame(minHeight: 52)
                     Divider().overlay(T.line)
-                    ToggleSwitch(label: "Haptics", isOn: $hapticsOn)
+                    ToggleSwitch(label: "IsleHaptics", isOn: $hapticsOn)
                 }
                 .padding(.horizontal, 12)
                 .background(RoundedRectangle(cornerRadius: 16).fill(T.surface))
@@ -139,7 +139,7 @@ struct SoundSettingsView: View {
         .screenBackground()
         .navigationTitle("Sounds & haptics")
         .onChange(of: soundOn) { _, v in Feedback.soundOn = v; if v { Feedback.play(.tick) } }
-        .onChange(of: hapticsOn) { _, v in Feedback.hapticsOn = v; if v { Haptics.play(.success) } }
+        .onChange(of: hapticsOn) { _, v in Feedback.hapticsOn = v; if v { IsleHaptics.play(.success) } }
         .onChange(of: volume) { _, v in Feedback.volume = v }
         .onDisappear { SoundEngine.shared.stopAmbient() }
     }
@@ -174,7 +174,7 @@ struct SoundSettingsView: View {
                 Text(item.desc).font(.isle(.caption, .semibold)).foregroundStyle(T.muted)
             }
             Spacer()
-            Tag(text: item.haptic == "None" ? "No haptic" : item.haptic)
+            IsleTag(text: item.haptic == "None" ? "No haptic" : item.haptic)
             Button { play(item) } label: {
                 Image(systemName: looping ? "stop.fill" : "play.fill")
                     .font(.system(size: 14, weight: .black)).foregroundStyle(T.ink)

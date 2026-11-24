@@ -21,15 +21,15 @@ struct IsleApp: App {
         container = c
         NotificationDelegate.shared.container = c
         UNUserNotificationCenter.current().delegate = NotificationDelegate.shared
-        NotificationService.registerCategories()
+        IsleNotifications.registerCategories()
+        SideSwitcher.shared.prepareLaunch()
     }
 
     var body: some Scene {
         WindowGroup {
-            RootView()
+            SideHost(isleContainer: container)
                 .environment(app)
         }
-        .modelContainer(container)
     }
 }
 
@@ -49,6 +49,10 @@ final class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
         let action = response.actionIdentifier
         let container = self.container
         Task { @MainActor in
+            // Tapping a reminder opens the side it belongs to.
+            if action == UNNotificationDefaultActionIdentifier {
+                SideSwitcher.shared.jump(to: id.hasPrefix("prime.") ? .prime : .isle)
+            }
             if let container, action == "DONE" || action == "LATER" {
                 NotificationDelegate.handle(id: id, action: action, container: container)
             }

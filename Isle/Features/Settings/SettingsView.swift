@@ -27,7 +27,7 @@ struct SettingsView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         if let s = settingsRows.first {
-                            NotificationService.reschedule(tasks: tasks, habits: habits, settings: s, pipName: isles.first?.pipName ?? "Pip")
+                            IsleNotifications.reschedule(tasks: tasks, habits: habits, settings: s, pipName: isles.first?.pipName ?? "Pip")
                         }
                         try? context.save()
                         dismiss()
@@ -55,9 +55,34 @@ private struct SettingsContent: View {
     @Binding var showSounds: Bool
     private var calendar: CalendarService { CalendarService.shared }
     @State private var notifDenied = false
+    @Environment(AppModel.self) private var app
 
     var body: some View {
         VStack(spacing: 16) {
+            Button {
+                app.showSettings = false
+                Task { @MainActor in
+                    try? await Task.sleep(for: .milliseconds(380))
+                    SideSwitcher.shared.switchTo(.prime)
+                }
+            } label: {
+                HStack(spacing: 12) {
+                    ZStack {
+                        Circle().fill(Color(hex: 0x05070B))
+                        PrimeMark().fill(Color(hex: 0x3D6BFF)).frame(width: 16, height: 16)
+                    }
+                    .frame(width: 36, height: 36)
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text("Switch to PRIME").font(.isle(.headline)).foregroundStyle(T.ink)
+                        Text("Your gym app, in here too").font(.isle(.caption, .heavy)).foregroundStyle(T.muted)
+                    }
+                    Spacer()
+                    Image(systemName: "arrow.left.arrow.right").font(.system(size: 14, weight: .heavy)).foregroundStyle(T.muted)
+                }
+                .card(padding: 12)
+            }
+            .buttonStyle(PressStyle())
+
             section("Pip") {
                 HStack(spacing: 10) {
                     PipView(mood: .happy, size: 56, colorIndex: isle.bodyColorIndex, outfit: isle.outfit)
@@ -121,7 +146,7 @@ private struct SettingsContent: View {
                     set: { on in
                         if on {
                             Task { @MainActor in
-                                let ok = await NotificationService.requestAuthorization()
+                                let ok = await IsleNotifications.requestAuthorization()
                                 settings.notificationsOn = ok
                                 notifDenied = !ok
                             }

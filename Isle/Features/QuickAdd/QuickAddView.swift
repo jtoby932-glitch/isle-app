@@ -95,9 +95,9 @@ struct QuickAddView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(chips.isEmpty ? "Start typing and Pip will sort it" : "Pip understood")
                     .font(.isle(.caption, .heavy)).foregroundStyle(T.muted)
-                FlowLayout(spacing: 6) {
+                IsleFlowLayout(spacing: 6) {
                     ForEach(Array(chips.enumerated()), id: \.offset) { i, c in
-                        Chip(text: c, dot: i == 0 ? T.habit(p.colorIndex) : nil, fill: i == 0 ? T.primarySoft.opacity(0.5) : T.surface)
+                        IsleChip(text: c, dot: i == 0 ? T.habit(p.colorIndex) : nil, fill: i == 0 ? T.primarySoft.opacity(0.5) : T.surface)
                             .transition(.scale(scale: 0.85).combined(with: .opacity).combined(with: .offset(y: 8)))
                     }
                 }

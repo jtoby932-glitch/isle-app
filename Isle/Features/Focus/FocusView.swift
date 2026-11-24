@@ -89,7 +89,7 @@ struct FocusView: View {
                             VStack(alignment: .leading, spacing: 6) {
                                 Text("\(isles.first?.pipName ?? "Pip") is building a \(buildDisplay.lowercased()) for your isle")
                                     .font(.isle(.subheadline, .heavy)).foregroundStyle(T.cream)
-                                ProgressBar(value: frac, color: T.good, track: Color(hex: 0x24204A))
+                                IsleProgressBar(value: frac, color: T.good, track: Color(hex: 0x24204A))
                             }
                             Text("\(Int(frac * 100))%").font(.isle(.subheadline, .heavy)).foregroundStyle(T.cream).monospacedDigit()
                         }
@@ -157,7 +157,7 @@ struct FocusView: View {
         }
         .onDisappear {
             SoundEngine.shared.stopAmbient()
-            NotificationService.cancelFocusEnd()
+            IsleNotifications.cancelFocusEnd()
         }
     }
 
@@ -208,12 +208,12 @@ struct FocusView: View {
             endAt = Date().addingTimeInterval(p)
             pausedLeft = nil
             SoundEngine.shared.startAmbient(sound)
-            NotificationService.scheduleFocusEnd(at: endAt!, title: task?.title ?? "your focus")
+            IsleNotifications.scheduleFocusEnd(at: endAt!, title: task?.title ?? "your focus")
         } else {
             Feedback.play(.pause)
             pausedLeft = left(at: Date())
             SoundEngine.shared.stopAmbient()
-            NotificationService.cancelFocusEnd()
+            IsleNotifications.cancelFocusEnd()
         }
     }
 
@@ -222,7 +222,7 @@ struct FocusView: View {
         started = true
         endAt = Date().addingTimeInterval(total)
         SoundEngine.shared.startAmbient(sound)
-        NotificationService.scheduleFocusEnd(at: endAt!, title: task?.title ?? "your focus")
+        IsleNotifications.scheduleFocusEnd(at: endAt!, title: task?.title ?? "your focus")
     }
 
     private func adjust(_ delta: TimeInterval) {
@@ -236,7 +236,7 @@ struct FocusView: View {
         total = max(total + (newLeft - current), newLeft)
         if pausedLeft != nil { pausedLeft = newLeft } else {
             endAt = Date().addingTimeInterval(newLeft)
-            NotificationService.scheduleFocusEnd(at: endAt!, title: task?.title ?? "your focus")
+            IsleNotifications.scheduleFocusEnd(at: endAt!, title: task?.title ?? "your focus")
         }
     }
 
@@ -244,7 +244,7 @@ struct FocusView: View {
         guard !finished else { return }
         withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) { finished = true }
         SoundEngine.shared.stopAmbient()
-        NotificationService.cancelFocusEnd()
+        IsleNotifications.cancelFocusEnd()
         Feedback.play(.bowl)
         Feedback.play(.celebrate, after: 0.9)
         let store = Store(context: context)

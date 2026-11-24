@@ -11,7 +11,6 @@ extension UIColor {
 }
 
 extension Color {
-    init(hex: UInt32) { self.init(uiColor: UIColor(hex: hex)) }
 
     static func dynamic(_ light: UInt32, _ dark: UInt32) -> Color {
         Color(uiColor: UIColor { traits in
@@ -80,7 +79,7 @@ extension Font {
 
 // MARK: - Modifiers
 
-struct CardModifier: ViewModifier {
+struct IsleCardModifier: ViewModifier {
     var fill: Color = T.surface
     var radius: CGFloat = T.radius
     var padding: CGFloat = 12
@@ -103,7 +102,7 @@ struct CardModifier: ViewModifier {
 
 extension View {
     func card(fill: Color = T.surface, radius: CGFloat = T.radius, padding: CGFloat = 12, shadow: Bool = false) -> some View {
-        modifier(CardModifier(fill: fill, radius: radius, padding: padding, shadow: shadow))
+        modifier(IsleCardModifier(fill: fill, radius: radius, padding: padding, shadow: shadow))
     }
 
     func screenBackground() -> some View {

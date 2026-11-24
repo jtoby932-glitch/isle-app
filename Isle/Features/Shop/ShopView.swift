@@ -101,7 +101,7 @@ struct ShopView: View {
                         .overlay(Circle().strokeBorder(T.outline, lineWidth: 2))
                     VStack(alignment: .leading, spacing: 6) {
                         Text("\(isle?.pipName ?? "Pip") · Level \(level)").font(.isle(.title3, .heavy)).foregroundStyle(T.ink)
-                        ProgressBar(value: Double(progress.have) / Double(max(1, progress.need)), color: Color(hex: 0xB8A4F5), height: 12)
+                        IsleProgressBar(value: Double(progress.have) / Double(max(1, progress.need)), color: Color(hex: 0xB8A4F5), height: 12)
                         Text("\(progress.have) / \(progress.need) growth to level \(level + 1)").font(.isle(.caption, .heavy)).foregroundStyle(T.muted)
                         Text("Wearing: \(outfitName(isle?.outfit ?? "none"))").font(.isle(.footnote, .heavy)).foregroundStyle(T.ink)
                     }
@@ -142,7 +142,7 @@ struct ShopView: View {
         let complete = q.have >= q.need
         return VStack(alignment: .leading, spacing: 6) {
             Text(q.name).font(.isle(.caption, .heavy)).foregroundStyle(T.ink).lineLimit(2).frame(minHeight: 30, alignment: .topLeading)
-            ProgressBar(value: Double(q.have) / Double(q.need), color: complete ? T.primary : T.good)
+            IsleProgressBar(value: Double(q.have) / Double(q.need), color: complete ? T.primary : T.good)
             if complete && !claimed {
                 Button("Claim +\(q.reward)") {
                     let isle = store.isle()

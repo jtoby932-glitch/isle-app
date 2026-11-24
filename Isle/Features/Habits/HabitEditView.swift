@@ -105,7 +105,7 @@ struct HabitEditView: View {
 
                 VStack(alignment: .leading, spacing: 6) {
                     SectionLabel(text: "How long?")
-                    FlowLayout(spacing: 6) {
+                    IsleFlowLayout(spacing: 6) {
                         ForEach([1, 5, 10, 15, 20, 30, 45, 60], id: \.self) { m in
                             ToggleChip(text: Fmt.duration(m), on: minutes == m) {
                                 Feedback.play(.chip(m / 10))
@@ -125,7 +125,7 @@ struct HabitEditView: View {
                 if !others.isEmpty {
                     VStack(alignment: .leading, spacing: 6) {
                         SectionLabel(text: "Chain after (optional)")
-                        FlowLayout(spacing: 6) {
+                        IsleFlowLayout(spacing: 6) {
                             ToggleChip(text: "None", on: chainAfter == nil) { Feedback.play(.tap); chainAfter = nil }
                             ForEach(others) { o in
                                 ToggleChip(text: o.name, on: chainAfter == o.id) { Feedback.play(.tap); chainAfter = o.id }

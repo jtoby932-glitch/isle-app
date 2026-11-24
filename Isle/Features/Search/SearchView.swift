@@ -96,7 +96,7 @@ struct SearchView: View {
                                     Text(r.sub).font(.isle(.caption, .bold)).foregroundStyle(T.muted)
                                 }
                                 Spacer()
-                                Tag(text: r.kind).padding(.trailing, 10)
+                                IsleTag(text: r.kind).padding(.trailing, 10)
                             }
                             .frame(minHeight: 54)
                             .background(T.surface)
